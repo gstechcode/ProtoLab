@@ -11,6 +11,7 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
+        '''
         self.profile()
         self.FT()
         self.PG()
@@ -29,7 +30,7 @@ class photos(object):
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
-        #self.SOBREPOSICAO()
+        '''
         pass
     def messagebox(self, title: str, texto: str):
         i= Tk()

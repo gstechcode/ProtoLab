@@ -38,6 +38,7 @@ class pcc3d(
         self.Page19()
         self.Page20()
         self.Page21()
+        self.Page22()
         self.setBackgroundEnd()
         self.document.save()
     def Cover(self):
@@ -496,8 +497,23 @@ class pcc3d(
         
         self.document.showPage()
     
-    
     def Page21(self):
+        
+        self.setBody()
+        
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png",0,0, width= 1920, height= -1080, mask= "auto")
+         
+        self.document.scale(1,-1)
+         
+        self.drawText(1360,350,f"SNA {self.db['SNA']['SNA']}", self.textSize + 5)
+        self.drawText(1360,400,f"SNB {self.db['SNB']['SNB']}", self.textSize + 5)
+        self.drawText(1360,450,f"Ângulo da Base do Crânio {self.db['CBA']['Cranial Base Angle']}", self.textSize + 5)
+        self.drawText(1360,500,f"NSL x ML {self.db['NSL x ML']['NSL x ML']}", self.textSize + 5)
+        self.drawText(1360,550,f"NSL x ML {self.db['NSL x NL']['NSL x NL']}", self.textSize + 5)
+        
+        self.document.showPage()
+    
+    def Page22(self):
 		
         self.setBody()
 

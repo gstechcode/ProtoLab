@@ -5,6 +5,7 @@ import os, json
 from PIL import Image
 from Resources.Tools import GenOdontograma
 from datetime import datetime
+from Libs.Reports.PDFs.odontograma import PDFOdontograma
 
 class pcc3d(
     backgrounds.backgrounds,
@@ -40,6 +41,9 @@ class pcc3d(
         self.Page21()
         self.Page22()
         self.setBackgroundEnd()
+        
+        odonto= PDFOdontograma()
+        
         self.document.save()
     def Cover(self):
         self.setCover()
@@ -572,4 +576,3 @@ class pcc3d(
         ano, mes, dia, hora, minutos, segundos= dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second
         complementoid= f"{ano}{mes}{dia}{hora}{minutos}{segundos}"
         self.document= canvas.Canvas(os.environ["USERPROFILE"] + "/Documents/CompassX/" + self.db["NOME"] + "/Protocolos" + "/" + self.db["NOME"].replace(" ","_")+ complementoid + ".pdf",self.PAGESIZE, bottomup=0)
-        

@@ -3,6 +3,7 @@ import win32gui
 import pyautogui
 from Libs.variables import *
 import os, json
+from tkinter import *
 from tkinter import messagebox
 from PIL import Image
 import time
@@ -11,7 +12,6 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
-        '''
         self.profile()
         self.FT()
         self.PG()
@@ -30,86 +30,86 @@ class photos(object):
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
-        '''
         pass
     def messagebox(self, title: str, texto: str):
         i= Tk()
         i.title(title)
-        i.config(bg="white", padx="30px", pady="30px")
-        label= Label(i, text= texto, font="Arial 20")
-        label.pack(pady="30px")
-        btn= Button(i, text="OK", font="Arial 20", command= i.destroy)
+        i.iconbitmap(os.getcwd() + "/CompassX.ico")
+        i.config(bg="orange", padx="30px", pady="30px")
+        label= Label(i, text= texto, font="Arial 14", bg="orange", fg="white")
+        label.pack(pady="20px")
+        btn= Button(i, text="OK", font="Arial 14", bg="green", fg="white", relief="flat",command= i.destroy)
         btn.pack()
         i.mainloop()
     def profile(self):
-        messagebox.showinfo("Foto de Perfil","Faça o ajuste para fazer a captura da foto de perfil do paciente")
+        self.messagebox("Foto de Perfil","Faça o ajuste para fazer a captura da foto de perfil do paciente")
         self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/profile.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def FT(self):
-        messagebox.showinfo("Foto da Posição dos Gônios","Faça o ajuste para fazer a captura da foto da posição dos gônios do paciente")
+        self.messagebox("Foto da Posição dos Gônios","Faça o ajuste para fazer a captura da foto da posição dos gônios do paciente")
         self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FT.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def PG(self):
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PG.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def DH(self):
-        messagebox.showinfo("Dimensões das Hemi-Mandíbulas","Faça o ajuste para fazer a captura da foto das Hemi-Mandíbulas")
+        self.messagebox("Dimensões das Hemi-Mandíbulas","Faça o ajuste para fazer a captura da foto das Hemi-Mandíbulas")
         self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DH.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def DPC(self):
-        messagebox.showinfo("Distância Dentes P. Coronal","Faça o ajuste para fazer a captura da foto da Distância Dentes P. Coronal")
+        self.messagebox("Distância Dentes P. Coronal","Faça o ajuste para fazer a captura da foto da Distância Dentes P. Coronal")
         self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DPC.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def AF(self):
-        messagebox.showinfo("Foto da Altura Facial e Forma da Mandibula","Faça o ajuste para fazer a captura da foto da altura facial e forma da mandibula")
+        self.messagebox("Foto da Altura Facial e Forma da Mandibula","Faça o ajuste para fazer a captura da foto da altura facial e forma da mandibula")
         self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/AF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def FM(self):
-        #messagebox.showinfo("Forma da Mandíbula","Faça o ajuste para fazer a captura da foto da forma da mandíbula")
+        #self.messagebox("Forma da Mandíbula","Faça o ajuste para fazer a captura da foto da forma da mandíbula")
         #self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FM.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def POEF(self):
-        messagebox.showinfo("POEF","Faça o ajuste para fazer a captura da foto do POEF")
+        self.messagebox("POEF","Faça o ajuste para fazer a captura da foto do POEF")
         self.quad()
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/POEF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
     def INC(self):
-        messagebox.showinfo("Incisivos","Faça o ajuste para fazer a captura da foto dos incisivos")
+        self.messagebox("Incisivos","Faça o ajuste para fazer a captura da foto dos incisivos")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/INC.png", region= coords)
     def TM(self):
-        messagebox.showinfo("Triangulo Mandibular","Faça o ajuste para fazer a captura da foto do triangulo mandibular")
+        self.messagebox("Triangulo Mandibular","Faça o ajuste para fazer a captura da foto do triangulo mandibular")
         self.quad()
         coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/TM.png", region= coords)
     def PSGCF(self):
-        #messagebox.showinfo("Posições Sagitais - Gônios, Capitulares e F. Mentonianos","Faça o ajuste para fazer a captura da foto das posições sagitais")
+        #self.messagebox("Posições Sagitais - Gônios, Capitulares e F. Mentonianos","Faça o ajuste para fazer a captura da foto das posições sagitais")
         #self.quadFull()
         coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
     def RIGHTMETR(self):
-        messagebox.showinfo("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita com medidas")
+        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita com medidas")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png", region= coords)
 
     def LEFTMETR(self):
-        messagebox.showinfo("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda com medidas")
+        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda com medidas")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png", region= coords)
     
     def RIGHTRAD(self):
-        messagebox.showinfo("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita tomografica")
+        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita tomografica")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTRAD.png", region= coords)
     def LEFTRAD(self):
-        messagebox.showinfo("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda tomografica")
+        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda tomografica")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png", region= coords)
     def PANRAD(self):
-        messagebox.showinfo("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto tomografia panoramica")
+        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto tomografia panoramica")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PANRAD.png", region= coords)
@@ -118,12 +118,12 @@ class photos(object):
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0],self.PhotosFinalFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/SOBREPOSICAO.png", region= coords)
     def ATMLEFT(self):
-        messagebox.showinfo("ATM Esquerda","Faça o ajuste para fazer a captura da foto da ATM Esquerda")
+        self.messagebox("ATM Esquerda","Faça o ajuste para fazer a captura da foto da ATM Esquerda")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMLEFT.png", region= coords)
     def ATMRIGHT(self):
-        messagebox.showinfo("ATM Direito","Faça o ajuste para fazer a captura da foto da ATM Direito")
+        self.messagebox("ATM Direito","Faça o ajuste para fazer a captura da foto da ATM Direito")
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMRIGHT.png", region= coords)
@@ -166,7 +166,7 @@ class photos(object):
         FinalPosition= (1885,966)
         self.PhotosInitFull= InitPosition
         self.PhotosFinalFull= FinalPosition
-        messagebox.showinfo("Tudo pronto?","A captura será feita do retangulo completo do Vista Dent")
+        self.messagebox("Tudo pronto?","A captura será feita do retangulo completo do Vista Dent")
         time.sleep(2)
     def optimizeImages(self):
         self.convertImage(os.getcwd() + "/Resources/Images/temp/FT.png")

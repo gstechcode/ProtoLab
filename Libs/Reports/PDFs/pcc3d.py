@@ -38,7 +38,8 @@ class pcc3d(
         self.Page18()
         self.Page19()
         self.Page20()
-        self.Page21()
+        if(self.db["denticao"] == "Decídua"):
+            self.Page21()
         self.Page22()
         self.setBackgroundEnd()
         
@@ -164,7 +165,7 @@ class pcc3d(
         self.document.drawCentredString(self.PAGESIZE[0]/2,910,self.db["response"]["GOLRCP"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,960,self.db["response"]["GOLRCAMPER"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,1010,self.db["response"]["GOLRMSP"])
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/PG.png",590,850, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",590,850, mask= "auto")
         self.document.showPage()
         
     def Page4(self):
@@ -220,7 +221,7 @@ class pcc3d(
         self.drawText(1400,497,"Ângulo Goníaco Esquerdo " + self.db["AGLR"]["AGL"], self.textSize)
         self.drawText(1430,745,"Eixo Condilar Esquerdo " + self.db["CARL"]["Condylar Axis Left"], self.textSize)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/FM.png",620,880, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/AF.png",620,880, mask= "auto")
         
         self.document.showPage()
     
@@ -346,7 +347,7 @@ class pcc3d(
 
         self.drawText(self.PAGESIZE[0]/2 + 60,810,self.db["response"]["GOLRMSP"], self.textSize)
 		
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/PSGCF.png",100,950, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/TM.png",100,950, mask= "auto")
   
         self.document.showPage()
         
@@ -508,12 +509,14 @@ class pcc3d(
         self.drawImage(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png",0,0, width= 1920, height= -1080, mask= "auto")
          
         self.document.scale(1,-1)
+        
+        self.drawText(1360,280,"Cefalometria Tollaro", self.titleSize, self.ORANGE)
          
-        self.drawText(1360,350,f"SNA {self.db['SNA']['SNA']}", self.textSize + 5)
-        self.drawText(1360,400,f"SNB {self.db['SNB']['SNB']}", self.textSize + 5)
-        self.drawText(1360,450,f"Ângulo da Base do Crânio {self.db['CBA']['Cranial Base Angle']}", self.textSize + 5)
-        self.drawText(1360,500,f"NSL x ML {self.db['NSL x ML']['NSL x ML']}", self.textSize + 5)
-        self.drawText(1360,550,f"NSL x ML {self.db['NSL x NL']['NSL x NL']}", self.textSize + 5)
+        self.drawText(1360,380,f"SNA {self.db['SNA']['SNA']}", self.textSize + 5)
+        self.drawText(1360,430,f"SNB {self.db['SNB']['SNB']}", self.textSize + 5)
+        self.drawText(1360,480,f"Ângulo da Base do Crânio {self.db['CBA']['Cranial Base Angle']}", self.textSize + 5)
+        self.drawText(1360,530,f"NSL x ML {self.db['NSL x ML']['NSL x ML']}", self.textSize + 5)
+        self.drawText(1360,580,f"NSL x ML {self.db['NSL x NL']['NSL x NL']}", self.textSize + 5)
         
         self.document.showPage()
     

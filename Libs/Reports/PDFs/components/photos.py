@@ -3,6 +3,7 @@ import win32gui
 import pyautogui
 from Libs.variables import *
 import os, json
+from functools import partial
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image
@@ -12,6 +13,8 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
+        '''
+        self.responseask= ""
         self.profile()
         self.FT()
         self.PG()
@@ -30,6 +33,7 @@ class photos(object):
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
+        '''
         pass
     def messagebox(self, title: str, texto: str):
         i= Tk()
@@ -41,92 +45,200 @@ class photos(object):
         btn= Button(i, text="OK", font="Arial 14", bg="green", fg="white", relief="flat",command= i.destroy)
         btn.pack()
         i.mainloop()
+    def askmessagebox(self, title: str, texto: str):
+        i= Tk()
+        i.title(title)
+        i.iconbitmap(os.getcwd() + "/CompassX.ico")
+        i.config(bg="orange", padx="30px", pady="30px")
+        label= Label(i, text= texto, font="Arial 14", bg="orange", fg="white")
+        label.pack(pady="20px")
+        frame= Frame(i, bg="orange")
+        frame.pack()
+        btn= Button(frame, text="Sim", font="Arial 14", bg="green", fg="white", relief="flat",command= partial(self.responseaskmessagebox, True, i))
+        btn.pack(side="left", padx="5px")
+        btn2= Button(frame, text="Não", font="Arial 14", bg="red", fg="white", relief="flat",command= partial(self.responseaskmessagebox, False, i))
+        btn2.pack(side="left", padx="5px")
+        i.mainloop()
+    def responseaskmessagebox(self, text, display):
+        self.responseAsk= text
+        display.destroy()
     def profile(self):
-        self.messagebox("Foto de Perfil","Faça o ajuste para fazer a captura da foto de perfil do paciente")
-        self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/profile.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        ciclo= True
+        while ciclo:
+            self.messagebox("Foto de Face Tecido Mole","Faça o ajuste para fazer a captura da Face de Tecido Mole do paciente")
+            self.quad()
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/profile.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def FT(self):
-        self.messagebox("Foto da Posição dos Gônios","Faça o ajuste para fazer a captura da foto da posição dos gônios do paciente")
-        self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FT.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        ciclo= True
+        while ciclo:
+            self.messagebox("Foto da Fig 1 Alterada","Faça o ajuste para fazer a captura da foto da Fig 1 Alterada do paciente")
+            self.quad()
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FT.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def PG(self):
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PG.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        #pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PG.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        pass
     def DH(self):
-        self.messagebox("Dimensões das Hemi-Mandíbulas","Faça o ajuste para fazer a captura da foto das Hemi-Mandíbulas")
-        self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DH.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        ciclo= True
+        while ciclo:
+            self.messagebox("Dimensões das Hemi-Mandíbulas","Faça o ajuste para fazer a captura da foto das Hemi-Mandíbulas")
+            self.quad()
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DH.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def DPC(self):
-        self.messagebox("Distância Dentes P. Coronal","Faça o ajuste para fazer a captura da foto da Distância Dentes P. Coronal")
-        self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DPC.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        ciclo= True
+        while ciclo:
+            self.messagebox("Distância Dentes P. Coronal","Faça o ajuste para fazer a captura da foto da Distância Dentes P. Coronal")
+            self.quad()
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DPC.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def AF(self):
-        self.messagebox("Foto da Altura Facial e Forma da Mandibula","Faça o ajuste para fazer a captura da foto da altura facial e forma da mandibula")
-        self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/AF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        ciclo= True
+        while ciclo:
+            self.messagebox("Foto da Altura Facial e Forma da Mandibula","Faça o ajuste para fazer a captura da foto da altura facial e forma da mandibula")
+            self.quad()
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/AF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def FM(self):
         #self.messagebox("Forma da Mandíbula","Faça o ajuste para fazer a captura da foto da forma da mandíbula")
         #self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FM.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        #pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FM.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        pass
     def POEF(self):
-        self.messagebox("POEF","Faça o ajuste para fazer a captura da foto do POEF")
-        self.quad()
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/POEF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+        ciclo= True
+        while ciclo:
+            self.messagebox("POEF","Faça o ajuste para fazer a captura da foto do POEF")
+            self.quad()
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/POEF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def INC(self):
-        self.messagebox("Incisivos","Faça o ajuste para fazer a captura da foto dos incisivos")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/INC.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("Incisivos","Faça o ajuste para fazer a captura da foto dos incisivos")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/INC.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def TM(self):
-        self.messagebox("Triangulo Mandibular","Faça o ajuste para fazer a captura da foto do triangulo mandibular")
-        self.quad()
-        coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/TM.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("Triangulo Mandibular","Faça o ajuste para fazer a captura da foto do triangulo mandibular")
+            self.quad()
+            coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/TM.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def PSGCF(self):
         #self.messagebox("Posições Sagitais - Gônios, Capitulares e F. Mentonianos","Faça o ajuste para fazer a captura da foto das posições sagitais")
         #self.quadFull()
-        coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
+        #coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
+        #pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
+        pass
     def RIGHTMETR(self):
-        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita com medidas")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png", region= coords)
-
+        ciclo= True
+        while ciclo:
+            self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita com medidas")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def LEFTMETR(self):
-        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda com medidas")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png", region= coords)
-    
+        ciclo= True
+        while ciclo:
+            self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda com medidas")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def RIGHTRAD(self):
-        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita tomografica")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTRAD.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto direita tomografica")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTRAD.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def LEFTRAD(self):
-        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda tomografica")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto esquerda tomografica")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def PANRAD(self):
-        self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto tomografia panoramica")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PANRAD.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("Reconstrução da Superficie","Faça o ajuste para fazer a captura da foto tomografia panoramica")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PANRAD.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def SOBREPOSICAO(self):
         self.quadFull()
         coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0],self.PhotosFinalFull[1])
         pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/SOBREPOSICAO.png", region= coords)
     def ATMLEFT(self):
-        self.messagebox("ATM Esquerda","Faça o ajuste para fazer a captura da foto da ATM Esquerda")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMLEFT.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("ATM Esquerda","Faça o ajuste para fazer a captura da foto da ATM Esquerda")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMLEFT.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def ATMRIGHT(self):
-        self.messagebox("ATM Direito","Faça o ajuste para fazer a captura da foto da ATM Direito")
-        self.quadFull()
-        coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
-        pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMRIGHT.png", region= coords)
+        ciclo= True
+        while ciclo:
+            self.messagebox("ATM Direito","Faça o ajuste para fazer a captura da foto da ATM Direito")
+            self.quadFull()
+            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMRIGHT.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def quad(self):
         arq= open(os.getcwd() + "/Resources/Databases/protocoords.json","r")
         db= json.loads(arq.readlines()[0])

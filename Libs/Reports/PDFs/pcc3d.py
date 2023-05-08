@@ -2,19 +2,21 @@ from reportlab.pdfgen import canvas
 from Libs.variables import *
 from Libs.Reports.PDFs.components import backgrounds, structure, photos
 import os, json
+from PIL import Image
 from Resources.Tools import GenOdontograma
+from datetime import datetime
 
 class pcc3d(
     backgrounds.backgrounds,
     structure.structure,
     photos.photos):
-    def __init__(self, docname):
+    def __init__(self):
         super().__init__()
-        self.docname= docname
         self.__vars__()
         self.Cover()
         self.Page1()
         self.Page2()
+        self.Page12()
         self.Page3()
         self.Page4()
         self.Page5()
@@ -22,12 +24,20 @@ class pcc3d(
         self.Page7()
         self.Page8()
         self.Page9()
+        self.INCView()
         self.Page10()
         self.Page11()
-        self.Page12()
         self.Page13()
+        self.Page13View()
         self.Page14()
+        self.Page14View()
         self.Page15()
+        self.Page16()
+        self.Page17()
+        self.Page18()
+        self.Page19()
+        self.Page20()
+        self.Page21()
         self.setBackgroundEnd()
         self.document.save()
     def Cover(self):
@@ -42,8 +52,8 @@ class pcc3d(
         self.drawText(200,320, str(self.db["IDADE"]), self.textSize)
         self.drawText(60,380, "Genero: ", self.textSize, self.ORANGE)
         self.drawText(220,380, self.db["Genero"], self.textSize)
-        self.drawText(970, 820, "Grupo Rotacional: {GrupoR} :: Categoria Auxológica: {Cat}".format(GrupoR= self.db["GrupoR"], Cat= self.db["CatAux"]), 35)
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/profile.png", 1000,750, width=700, height= 700)
+        self.drawText(670, 900, "Grupo Rotacional: {GrupoR} - Categoria Auxológica: {Cat}".format(GrupoR= self.db["GrupoR"], Cat= self.db["CatAux"]), 50)
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/profile.png", 800,820, width=800, height= 800)
         self.document.showPage()
         
     def Page2(self):
@@ -127,9 +137,9 @@ class pcc3d(
         self.document.drawCentredString(self.PAGESIZE[0]/2,y1 + spacing*7,self.db["response"]["HC"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,y1 + spacing*8,self.db["response"]["XMSP131416"])
         self.document.setStrokeColorRGB(255/255, 102/255, 0/255)
-        self.document.rect(40,215,400,90, fill=0, stroke= 1)
-        self.drawText(60,250,"Distância em Milímetros dos dentes aos", 20)
-        self.drawText(60,280,"Planos de Camper e P. Sagital Mediano", 20)
+        self.document.rect(40,50,750,140, fill=0, stroke= 1)
+        self.drawText(80,110,"Distância em Milímetros dos dentes aos", 40)
+        self.drawText(80,160,"Planos de Camper e P. Sagital Mediano", 40)
         self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",620,850, mask= "auto")
         self.document.showPage()
 
@@ -157,21 +167,23 @@ class pcc3d(
 
         self.setBody()
         self.drawText(60,120,"Dimensões das", self.titleSize, self.ORANGE)
-        self.drawText(60,190,"Hemi-Mandíbulas", self.titleSize, self.ORANGE)
+        self.drawText(60,190,"Hemimandíbulas", self.titleSize, self.ORANGE)
+        
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/DH.png",590,850, mask= "auto")
+        
+        self.document.scale(1,-1)
 
         self.drawText(40,645,"Diagonal Mandibular Direita " + self.db["CondLRGN"]["CondR - Gn"], self.textSize)
-        self.drawText(40,695,"Comprimento do Ramo Mandibular Direita " + self.db["CONDLRGOLR"]["CondR GoR"], self.textSize)
-        self.drawText(40,745,"Comprimento do Corpo Mandibular Direita " + self.db["CORPUSLR"]["Corpus R"], self.textSize)
+        self.drawText(40,695,"Comprimento do Ramo Mandibular Direito " + self.db["CONDLRGOLR"]["CondR GoR"], self.textSize)
+        self.drawText(40,745,"Comprimento do Corpo Mandibular Direito " + self.db["CORPUSLR"]["Corpus R"], self.textSize)
         
         self.drawText(1340,645,"Diagonal Mandibular Esquerda " + self.db["CondLRGN"]["CondL - Gn"], self.textSize)
-        self.drawText(1180,695,"Comprimento do Ramo Mandibular Esquerda " + self.db["CONDLRGOLR"]["CondL GoL"], self.textSize)
-        self.drawText(1180,745,"Comprimento do Corpo Mandibular Esquerda " + self.db["CORPUSLR"]["Corpus L"], self.textSize)
+        self.drawText(1180,695,"Comprimento do Ramo Mandibular Esquerdo " + self.db["CONDLRGOLR"]["CondL GoL"], self.textSize)
+        self.drawText(1180,745,"Comprimento do Corpo Mandibular Esquerdo " + self.db["CORPUSLR"]["Corpus L"], self.textSize)
 
         self.document.drawCentredString(self.PAGESIZE[0]/2,910,self.db["response"]["CONDLRGN"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,960,self.db["response"]["CONDLRGOLR"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,1010,self.db["response"]["GOLRGN"])
-        
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/DH.png",590,850, mask= "auto")
         
         self.document.showPage()
         
@@ -182,8 +194,8 @@ class pcc3d(
 
         self.drawText(60,120,"Altura Facial",self.titleSize, self.ORANGE)
         
-        self.drawText(40,745,"Altura Facial Ântero-superior AFAS " + self.db["AFASI"]["AFAS"],self.textSize)
-        self.drawText(1300,745,"Altura Facial Ântero-inferior AFAI " + self.db["AFASI"]["AFAI"],self.textSize)
+        self.drawText(40,745,"Altura Facial Anterosuperior AFAS " + self.db["AFASI"]["AFAS"],self.textSize)
+        self.drawText(1300,745,"Altura Facial Anteroinferior AFAI " + self.db["AFASI"]["AFAI"],self.textSize)
         
         self.document.drawCentredString(self.PAGESIZE[0]/2,960,self.db["response"]["ULH"])
         
@@ -197,11 +209,11 @@ class pcc3d(
 
         self.drawText(60,120,"Forma da Mandíbula", self.titleSize, self.ORANGE)
 
-        self.drawText(60,497,"Ângulo Goníaco Direito " + self.db["AFASI"]["AFAS"], self.textSize)
-        self.drawText(60,745,"Eixo Condilar Direito " + self.db["AFASI"]["AFAI"], self.textSize)
+        self.drawText(60,497,"Ângulo Goníaco Direito " + self.db["AGLR"]["AGR"], self.textSize)
+        self.drawText(60,745,"Eixo Condilar Direito " + self.db["CARL"]["Condylar Axis Right"], self.textSize)
 
-        self.drawText(1400,497,"Ângulo Goníaco Esquerdo " + self.db["AFASI"]["AFAS"], self.textSize)
-        self.drawText(1430,745,"Eixo Condilar Esquerdo " + self.db["AFASI"]["AFAI"], self.textSize)
+        self.drawText(1400,497,"Ângulo Goníaco Esquerdo " + self.db["AGLR"]["AGL"], self.textSize)
+        self.drawText(1430,745,"Eixo Condilar Esquerdo " + self.db["CARL"]["Condylar Axis Left"], self.textSize)
         
         self.drawImage(os.getcwd() + "/Resources/Images/temp/FM.png",620,880, mask= "auto")
         
@@ -227,20 +239,19 @@ class pcc3d(
 
         self.setBody()
         
-        self.drawText(1920/2,140,"Incisivos", self.titleSize, self.ORANGE)
-        self.drawText(1920/2 + 100,330,"Incisivo Central Esquerdo x Linha Holdaway " + self.db["P, Holdaway"]["31"], self.textSize)
-        self.drawText(1920/2 + 140,385,"Incisivo Central Direito x Linha Holdaway " + self.db["P, Holdaway"]["41"], self.textSize)
-        self.drawText(1920/2 + 370,440,"Pogônio x Linha Holdaway " + self.db["Pog P, Holdaway"]["Pog P, Holdaway"], self.textSize)
-        self.drawText(1920/2 + 510,495,"Distância H-Nariz 0,00mm", self.textSize)
-        self.drawText(1920/2 + 570,550,"IMPA Esquerdo " + self.db["IMPA"]["31"], self.textSize)
-        self.drawText(1920/2 + 610,605,"IMPA Direito " + self.db["IMPA"]["41"], self.textSize)
-        self.drawText(1920/2 + 220,660,"Ângulo Interincisivos Centrais Direitos " + self.db["ANG21311141"]["ANG1141"], self.textSize)
-        self.drawText(1920/2 + 160,715,"Ângulo Interincisivos Centrais Esquerdos " + self.db["ANG21311141"]["ANG2131"], self.textSize)
+        self.drawText(1920/2 + 250,140,"Incisivos", self.titleSize, self.ORANGE)
+        self.drawText(1920/2 + 250,330,"Incisivo Central Esquerdo x Linha Holdaway " + self.db["P, Holdaway"]["31"], self.textSize)
+        self.drawText(1920/2 + 280,385,"Incisivo Central Direito x Linha Holdaway " + self.db["P, Holdaway"]["41"], self.textSize)
+        self.drawText(1920/2 + 440,440,"Pogônio x Linha Holdaway " + self.db["Pog P, Holdaway"]["Pog P, Holdaway"], self.textSize)
+        self.drawText(1920/2 + 610,495,"IMPA Esquerdo " + self.db["IMPA"]["31"], self.textSize)
+        self.drawText(1920/2 + 650,550,"IMPA Direito " + self.db["IMPA"]["41"], self.textSize)
+        self.drawText(1920/2 + 335,605,"Ângulo Interincisivos Centrais Direitos " + self.db["ANG21311141"]["ANG1141"], self.textSize)
+        self.drawText(1920/2 + 305,660,"Ângulo Interincisivos Centrais Esquerdos " + self.db["ANG21311141"]["ANG2131"], self.textSize)
 
-        #self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",-562,1142, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",40,800, width= 1135, height= 591, mask= "auto")
 
         self.document.showPage()
-
+        
     def Page9(self):
         decidua= self.db["denticao"] == "Decídua"
         if(decidua):
@@ -252,29 +263,36 @@ class pcc3d(
             
         self.setBody()
   
-        self.drawText(self.PAGESIZE[0]/2,140,"Incisivos", self.titleSize, self.ORANGE)
+        self.drawText(self.PAGESIZE[0]/2 + 250,140,"Incisivos", self.titleSize, self.ORANGE)
 
-        self.drawText(self.PAGESIZE[0]/2 + 220,330,f"Ângulo {teeth11} Linha NA " + self.db["NA"]["ANG11"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,330,f"Ângulo {teeth11} Linha NA " + self.db["NA"]["ANG11"], self.textSize)
 		
-        self.drawText(self.PAGESIZE[0]/2 + 220,385,f"Ângulo {teeth21} Linha NA " + self.db["NA"]["ANG21"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,385,f"Ângulo {teeth21} Linha NA " + self.db["NA"]["ANG21"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 220,440,f"Distância {teeth11} Linha NA " + self.db["NA"]["MM11"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,440,f"Distância {teeth11} Linha NA " + self.db["NA"]["MM11"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 220,495,f"Distância {teeth21} Linha NA " + self.db["NA"]["MM21"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,495,f"Distância {teeth21} Linha NA " + self.db["NA"]["MM21"], self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2 + 220,550,f"Distância {teeth11} Linha A-Pog " + self.db["APOG1121"]["APOG11MM"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,550,f"Distância {teeth11} Linha A-Pog " + self.db["APOG1121"]["APOG11MM"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 220,605,f"Distância {teeth21} Linha A-Pog " + self.db["APOG1121"]["APOG21MM"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,605,f"Distância {teeth21} Linha A-Pog " + self.db["APOG1121"]["APOG21MM"], self.textSize)
 		
-        #self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",-562,1142, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",40,800, width= 1135, height= 591, mask= "auto")
         
+        
+        #self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",0,0, width= 1920, height= -1080, mask= "auto")
+        
+        self.document.showPage()
+        
+    def INCView(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",0,0, width= 1920, height= -1080, mask= "auto")
         self.document.showPage()
         
     def Page10(self):
 
         self.setBody()
-
-		#self.pdf.drawImage(os.environ["USERPROFILE"] + "\\Documents\\LabReport\\TM.png",-270,-1060, mask= "auto")
 
         self.drawText(80,140,"Triângulo Mandibular", self.titleSize, self.ORANGE)
 
@@ -294,6 +312,8 @@ class pcc3d(
 
         self.drawText(self.PAGESIZE[0]/2 + 60,770,self.db["response"]["GOLRMSP"], self.textSize)
 
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/TM.png",100,950, mask= "auto")
+        
         self.document.showPage()
         
     def Page11(self):
@@ -321,7 +341,7 @@ class pcc3d(
 
         self.drawText(self.PAGESIZE[0]/2 + 60,810,self.db["response"]["GOLRMSP"], self.textSize)
 		
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/PSGCF.png",270,-1060, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/PSGCF.png",100,950, mask= "auto")
   
         self.document.showPage()
         
@@ -354,37 +374,142 @@ class pcc3d(
         
         self.drawText(self.PAGESIZE[0]/2 - 40,785,self.db["response"]["CP3646"], self.textSize)
         
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/DPC.png",100,950, mask= "auto")
+        
         self.document.showPage()   
 
     def Page13(self):
         
         self.setBody()
         
-        self.drawText(self.PAGESIZE[0]/2 - 40,120,"Espaços Articulares ATM Esquerda", self.titleSize, self.ORANGE)
+        self.drawText(int(self.PAGESIZE[0]/4 - 200),int(self.PAGESIZE[1]/2),"Espaços Articulares ATM Esquerda", 100,self.ORANGE)
+        
+        self.drawText(int(self.PAGESIZE[0]/4 - 100),int(self.PAGESIZE[1]/2 + 120),"Avaliar valores no Infográfico", 90)
         
         self.document.showPage()
+        
+    def Page13View(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/ATMLEFT.png",0,0, width= 1920, height= -1080, mask= "auto")
+        self.document.showPage()
+        
+        
   
     def Page14(self):
         
         self.setBody()
         
-        self.drawText(self.PAGESIZE[0]/2 - 40,120,"Espaços Articulares ATM Direita", self.titleSize, self.ORANGE)
-
+        self.drawText(int(self.PAGESIZE[0]/4 - 200),int(self.PAGESIZE[1]/2),"Espaços Articulares ATM Direita", 100,self.ORANGE)
+        
+        self.drawText(int(self.PAGESIZE[0]/4 - 100),int(self.PAGESIZE[1]/2 + 120),"Avaliar valores no Infográfico", 90)
+        
+        self.document.showPage()
+        
+    def Page14View(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/ATMRIGHT.png",0,0, width= 1920, height= -1080, mask= "auto")
+        self.document.showPage()
+        
+    def Page15(self):
+        
+        self.setBody()
+        
+        self.drawText(int(self.PAGESIZE[0]/4 - 100),int(self.PAGESIZE[1]/2),"Reconstrução de Superfície", 100,self.ORANGE)
+        
+        self.document.showPage()
+        
+    def Page16(self):
+        
+        self.setBody()
+        
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png",0,0, width= 1920, height= -1080, mask= "auto")
+         
+        self.document.scale(1,-1)
+        
+        self.drawText(1360,250,"Posição Maxila", self.titleSize, self.ORANGE)
+         
+        self.drawText(1360,350,f"A-Nperp {self.db['A - Np']['A - Np']}", self.textSize + 5)
+        self.drawText(1360,415,f"SNA {self.db['SNA']['SNA']}", self.textSize + 5)
+        
+        self.drawText(1360,515,"Posição Mandibula", self.titleSize, self.ORANGE) 
+        
+        self.drawText(1360,615,f"Pog – Nperp {self.db['Pog - Np']['Pog - Np']}", self.textSize + 5)
+        self.drawText(1360,680,f"SNB {self.db['SNB']['SNB']}", self.textSize + 5)
+        self.drawText(1360,745,f"T-TM Direita {self.db['TTMLR']['T-TM DIR']}", self.textSize + 5)
+        
+        self.document.showPage()
+        
+    def Page17(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png",0,0, width= 1920, height= -1080, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
+        self.drawText(20,250,"Posição Maxila", self.titleSize, self.ORANGE)
+         
+        self.drawText(20,350,f"A-Nperp {self.db['A - Np']['A - Np']}", self.textSize + 5)
+        self.drawText(20,415,f"SNA {self.db['SNA']['SNA']}", self.textSize + 5)
+        
+        self.drawText(20,515,"Posição Mandibula", self.titleSize, self.ORANGE) 
+        
+        self.drawText(20,615,f"Pog – Nperp {self.db['Pog - Np']['Pog - Np']}", self.textSize + 5)
+        self.drawText(20,680,f"SNB {self.db['SNB']['SNB']}", self.textSize + 5)
+        self.drawText(20,745,f"T-TM Esquerda {self.db['TTMLR']['T-TM ESQ']}", self.textSize + 5)
+        
+        self.document.showPage()
+        
+    def Page18(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/PANRAD.png",0,0, width= 1920, height= -1080, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
+        self.drawText((self.PAGESIZE[0] / 4) + 100,80,"Reconstrução Panorâmica", self.titleSize, self.ORANGE)
+        
+        self.document.showPage()
+        
+    def Page19(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/RIGHTRAD.png",0,0, width= 1920, height= -1080, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
+        self.drawText(60,80,"Reconstrução", self.titleSize, self.ORANGE)
+        self.drawText(60,150,"Hemitelerradiografia Direita", self.titleSize, self.ORANGE)
+        
+        self.document.showPage()
+        
+    def Page20(self):
+        
+        self.setBody()
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",0,0, width= 1920, height= -1080, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
+        self.drawText(60,80,"Reconstrução", self.titleSize, self.ORANGE)
+        self.drawText(60,150,"Hemitelerradiografia Esquerda", self.titleSize, self.ORANGE)
+        
         self.document.showPage()
     
-    def Page15(self):
+    
+    def Page21(self):
 		
         self.setBody()
 
         GenOdontograma.GenOdontograma(self.db)
         
-        self.drawText(1570, 100, "Infográfico", self.titleSize, self.ORANGE)
+        self.drawText(810, 100, "Infográfico", 40, self.ORANGE)
         
-        self.drawText(1700, 250, "Criado por", self.textSize)
+        self.drawText(1595, 830, "Infográfico criado pela", self.textSize)
         
-        self.drawText(1500, 290, "Dra. Mara Rufato Cardoso", self.textSize)
+        self.drawText(1480, 870, "Dra. Mara Rufato Cardoso(2017)", self.textSize)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/odontograma.png",70,1000, width= 1326,height= 949, mask="auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/odontograma.png",230,1000, width= 1326,height= 949, mask="auto")
         
         self.document.showPage()
 
@@ -397,16 +522,38 @@ class pcc3d(
         self.document.showPage()
   
     def __vars__(self):
-        self.denticaoSlot= 1
         self.runPhotos()
-        self.optimizeImages()
         self.titleSize= 60
         self.textSize= 45
         banco= open(os.getcwd() + "/Resources/Databases/PCTable.tbl", "r")
         self.db= json.loads(banco.readlines()[0])
         banco.close()
+        if(self.db["denticao"] == "Decídua" or self.db["denticao"] == "Mista"):
+            self.denticaoSlot= False
+        else:
+            self.denticaoSlot= True
         self.PAGESIZE= (1920,1080)
         self.registerFont()
         self.ORANGE= (255/255,102/255,0/255)
-        self.document= canvas.Canvas(self.docname,self.PAGESIZE, bottomup=0)
+        self.optimizeImages()
+        try:
+            os.mkdir(os.environ["USERPROFILE"] + "/Documents/CompassX")
+        except FileExistsError:
+            pass
+        try:
+            os.mkdir(os.environ["USERPROFILE"] + "/Documents/CompassX/" + self.db["NOME"])
+        except FileExistsError:
+            pass
+        try:
+            os.mkdir(os.environ["USERPROFILE"] + "/Documents/CompassX/" + self.db["NOME"] + "/Protocolos")
+        except FileExistsError:
+            pass
+        try:
+            os.mkdir(os.environ["USERPROFILE"] + "/Documents/CompassX/" + self.db["NOME"] + "/Odontogramas")
+        except FileExistsError:
+            pass
+        dt= datetime.now()
+        ano, mes, dia, hora, minutos, segundos= dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second
+        complementoid= f"{ano}{mes}{dia}{hora}{minutos}{segundos}"
+        self.document= canvas.Canvas(os.environ["USERPROFILE"] + "/Documents/CompassX/" + self.db["NOME"] + "/Protocolos" + "/" + self.db["NOME"].replace(" ","_")+ complementoid + ".pdf",self.PAGESIZE, bottomup=0)
         

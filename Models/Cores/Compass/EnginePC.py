@@ -53,12 +53,13 @@ from Models.Cores.Compass.Functions.GROUP import GROUP
 from Models.Cores.Compass.Functions.COMMENTS import COMMENTS
 from Models.Cores.Compass.Functions.GORGOL import GORGOL
 from Models.Cores.Compass.Functions.PORPOL import PORPOL
+from Models.Cores.Compass.Functions.TTMLR import TTMLR
 from Libs.autoload import *
 
 class EnginePC:
 	def __init__(self, GUI):
 		self.GUI= GUI
-		self.path= GUI.path
+		self.path= GUI.filepath
 		self.fdict= {}
 		self.anp= -1 if int(GUI.forms["A - Np"]) == 0 else 1
 		self.pognp= -1 if int(GUI.forms["Pog - Np"]) == 0 else 1
@@ -69,7 +70,7 @@ class EnginePC:
 		self.idade= GUI.idade
 		self.__process__()
 	def __process__(self):
-		csv= Loader(self.GUI.path)
+		csv= Loader(self.GUI.filepath)
 		self.csv= csv.forDict()
 		self.fdict["NOME"]= self.csv["Name"]
 		self.fdict["IDADE"]= self.idade
@@ -95,6 +96,7 @@ class EnginePC:
 		condlrgn= CONDLRGN(self)
 		golrcamper= GOLRCAMPER(self)
 		golrcp= GOLRCP(self)
+		ttmlr= TTMLR(self)
 		try:
 			pholdway= PHOLDAWAY(self)
 		except Exception:

@@ -4,7 +4,7 @@ class Test:
     def __init__(self):
         self.idade= 15
         self.denticao= "Mista"
-        self.path= os.environ["USERPROFILE"] + "\\Downloads\\Stefani Borio.csv"
+        self.path= os.environ["USERPROFILE"] + "\\Downloads\\Nadin.csv"
         self.forms= {
             "A - Np": 0,
             "Pog - Np": 0,

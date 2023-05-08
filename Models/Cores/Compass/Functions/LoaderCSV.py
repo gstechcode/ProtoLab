@@ -114,7 +114,9 @@ class LoaderCSV:
 			"POR-POL",
 			"GOR-GOL",
 			"Ângulo Goníaco Left",
-			"Ângulo Goníaco Right"
+			"Ângulo Goníaco Right",
+			"T-TM ESQ",
+			"T-TM DIR"
 		]
 		self.file= []
 		self.proto= {}

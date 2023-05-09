@@ -153,6 +153,11 @@ class pcc3d(
         self.setBody()
         self.drawText(60,120,"Posição dos Gônios",self.titleSize, self.ORANGE)
         self.drawText(20,550,"Gônio Direito",self.textSize + 5)
+        
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",590,850, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
         self.drawText(20,625,"Profundidade do Gônio Direito " + self.db["GOLRCP"]["GoL Coronal Plane"],self.textSize)
         self.drawText(20,675,"Distância Gônio Direito ao P. Camper " + self.db["GoLRCamper"]["GoL Camper"],self.textSize)
         self.drawText(20,725,"Gônio Direito X P.S.M " + self.db["GOLRMSP"]["GoL MSP"],self.textSize)
@@ -165,7 +170,6 @@ class pcc3d(
         self.document.drawCentredString(self.PAGESIZE[0]/2,910,self.db["response"]["GOLRCP"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,960,self.db["response"]["GOLRCAMPER"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,1010,self.db["response"]["GOLRMSP"])
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",590,850, mask= "auto")
         self.document.showPage()
         
     def Page4(self):
@@ -200,12 +204,14 @@ class pcc3d(
 
         self.drawText(60,120,"Altura Facial",self.titleSize, self.ORANGE)
         
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/AF.png",620,850, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
         self.drawText(40,745,"Altura Facial Anterosuperior AFAS " + self.db["AFASI"]["AFAS"],self.textSize)
         self.drawText(1300,745,"Altura Facial Anteroinferior AFAI " + self.db["AFASI"]["AFAI"],self.textSize)
         
         self.document.drawCentredString(self.PAGESIZE[0]/2,960,self.db["response"]["ULH"])
-        
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/AF.png",620,850, mask= "auto")
         
         self.document.showPage()
         

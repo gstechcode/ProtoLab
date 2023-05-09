@@ -73,7 +73,7 @@ font: 26pt &quot;Sora bold&quot;;</string>
    <widget class="QSlider" name="ANP">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>190</y>
       <width>101</width>
       <height>41</height>
@@ -135,7 +135,7 @@ color: white;</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>435</x>
+      <x>390</x>
       <y>247</y>
       <width>101</width>
       <height>41</height>
@@ -160,7 +160,7 @@ color: white;</string>
    <widget class="QSlider" name="POGNP">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>250</y>
       <width>101</width>
       <height>41</height>
@@ -197,7 +197,7 @@ QSlider::sub-page{
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>433</x>
+      <x>432</x>
       <y>309</y>
       <width>101</width>
       <height>41</height>
@@ -216,13 +216,13 @@ QSlider::sub-page{
 color: white;</string>
     </property>
     <property name="text">
-     <string>Gn - MSP</string>
+     <string>PSM</string>
     </property>
    </widget>
    <widget class="QSlider" name="GNMSP">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>310</y>
       <width>101</width>
       <height>41</height>
@@ -259,7 +259,7 @@ QSlider::sub-page{
    <widget class="QSlider" name="LDM">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>370</y>
       <width>101</width>
       <height>41</height>
@@ -296,7 +296,7 @@ QSlider::sub-page{
    <widget class="QSlider" name="UD">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>430</y>
       <width>101</width>
       <height>41</height>
@@ -333,9 +333,9 @@ QSlider::sub-page{
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>478</x>
+      <x>332</x>
       <y>368</y>
-      <width>101</width>
+      <width>161</width>
       <height>41</height>
      </rect>
     </property>
@@ -352,15 +352,15 @@ QSlider::sub-page{
 color: white;</string>
     </property>
     <property name="text">
-     <string>LDM</string>
+     <string>Linha Média Inf</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>474</x>
+      <x>320</x>
       <y>430</y>
-      <width>101</width>
+      <width>171</width>
       <height>41</height>
      </rect>
     </property>
@@ -377,7 +377,7 @@ color: white;</string>
 color: white;</string>
     </property>
     <property name="text">
-     <string>UDM</string>
+     <string>Linha Média Sup</string>
     </property>
    </widget>
    <widget class="QComboBox" name="DENTICAO">
@@ -543,7 +543,7 @@ QDateEdit QWidget{
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>415</x>
       <y>190</y>
       <width>101</width>
       <height>41</height>
@@ -571,8 +571,8 @@ color: white;</string>
    <widget class="QLabel" name="TXTFILE">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>410</y>
+      <x>320</x>
+      <y>90</y>
       <width>321</width>
       <height>41</height>
      </rect>
@@ -600,8 +600,8 @@ color: white;</string>
    <widget class="QPushButton" name="BTNFILE">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>400</y>
+      <x>330</x>
+      <y>80</y>
       <width>301</width>
       <height>61</height>
      </rect>
@@ -614,6 +614,286 @@ color: white;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>517</x>
+      <y>190</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>P</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>190</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>A</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>517</x>
+      <y>250</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>P</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>250</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>A</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>517</x>
+      <y>310</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>D</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>310</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>E</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>517</x>
+      <y>370</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>D</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>370</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>E</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_18">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>430</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>E</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>517</x>
+      <y>430</y>
+      <width>16</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sora</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: transparent;
+color: white;</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string>D</string>
     </property>
    </widget>
   </widget>

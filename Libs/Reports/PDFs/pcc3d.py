@@ -69,6 +69,11 @@ class pcc3d(
         desvio= 0
         x1, y1, x2, y2= 40,530,1350,530
         justify= 95
+        
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",620,850, mask= "auto")
+        
+        self.document.scale(1,-1)
+        
         #13 Height Camper
         if(self.denticaoSlot):
             self.drawText(x1,y1, f"Altura 53 X Plano de Camper " + self.db["HC1323"]["13 Height Camper"],self.textSize)
@@ -146,7 +151,6 @@ class pcc3d(
         self.document.rect(40,50,750,140, fill=0, stroke= 1)
         self.drawText(80,110,"Distância em Milímetros dos dentes aos", 40)
         self.drawText(80,160,"Planos de Camper e P. Sagital Mediano", 40)
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",620,850, mask= "auto")
         self.document.showPage()
 
     def Page3(self):
@@ -154,7 +158,7 @@ class pcc3d(
         self.drawText(60,120,"Posição dos Gônios",self.titleSize, self.ORANGE)
         self.drawText(20,550,"Gônio Direito",self.textSize + 5)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",590,850, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/PG.png",590,850, mask= "auto")
         
         self.document.scale(1,-1)
         
@@ -227,7 +231,7 @@ class pcc3d(
         self.drawText(1400,497,"Ângulo Goníaco Esquerdo " + self.db["AGLR"]["AGL"], self.textSize)
         self.drawText(1430,745,"Eixo Condilar Esquerdo " + self.db["CARL"]["Condylar Axis Left"], self.textSize)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/AF.png",620,880, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/FM.png",620,880, mask= "auto")
         
         self.document.showPage()
     
@@ -585,3 +589,6 @@ class pcc3d(
         ano, mes, dia, hora, minutos, segundos= dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second
         complementoid= f"{ano}{mes}{dia}{hora}{minutos}{segundos}"
         self.document= canvas.Canvas(os.environ["USERPROFILE"] + "/Documents/CompassX/" + self.db["NOME"] + "/Protocolos" + "/" + self.db["NOME"].replace(" ","_")+ complementoid + ".pdf",self.PAGESIZE, bottomup=0)
+        path= f"""explorer.exe "{os.environ['USERPROFILE']}\Documents\CompassX\{self.db['NOME']}"""
+        os.system(path)
+        

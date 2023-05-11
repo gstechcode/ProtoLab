@@ -503,9 +503,9 @@ class pcc3d(
     def Page20(self):
         
         self.setBody()
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",1920,0, width= -1920, height= -1080, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",-1920,0, width= 1920, height= -1080, mask= "auto", invert= True)
         
-        self.document.scale(1,-1)
+        self.document.scale(-1,-1)
         
         self.drawText(60,80,"Reconstrução", self.titleSize, self.ORANGE)
         self.drawText(60,150,"Hemitelerradiografia Esquerda", self.titleSize, self.ORANGE)

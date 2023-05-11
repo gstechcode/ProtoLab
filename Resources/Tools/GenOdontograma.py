@@ -68,6 +68,7 @@ viewBox="0 0 8798 6221"
     .fil4 {fill:red}
     .fil6 {fill:yellow}
     .fil3 {fill:white}
+    .filblue{fill:blue}
     .fil1 {fill:white;fill-rule:nonzero}
     .fnt4 {font-weight:bold;font-size:104.645px;font-family:'Arial'}
     .fnt8 {font-weight:normal;font-size:105.97px;font-family:'Arial'}
@@ -201,6 +202,8 @@ viewBox="0 0 8798 6221"
   <rect class="fil2 str0" x="6454" y="4520" width="1218" height="223"/>
   <rect class="fil2 str0" x="5930" y="4778" width="1058" height="217"/>
   <rect class="fil2 str0" x="5219" y="5251" width="903" height="217"/>
+  <rect class="fil2 str0" width="1155.4406" height="304.06326" x="176.35222" y="2110.1995" />
+  <rect class="fil2 str0" width="1155.4406" height="304.06326" x="7483.7212" y="2102.7583" />
   <g id="_2852933453904">
    <path class="fil1 str1" d="M6165 5359l0 -14 0 0 1 0 1 0 1 -1 2 0 1 0 2 0 2 0 3 0 2 0 3 0 2 0 3 -1 2 0 3 0 2 -1 3 0 3 -1 2 0 3 0 2 0 3 0 2 0 2 0 2 -1 2 0 1 0 2 0 1 0 0 0 1 -1 0 0 1 15 0 0 0 0 -1 0 -1 0 -1 0 -2 0 -2 0 -1 1 -2 0 -2 0 -3 0 -2 1 -3 0 -3 0 -2 0 -3 0 -3 0 -3 1 -2 0 -3 0 -3 1 -2 0 -2 0 -3 1 -2 0 -1 0 -3 0 -1 0 -1 0 -1 0 -2 0 0 0zm-74 -13l82 -33 -7 78 -75 -45z"/>
   </g>
@@ -304,9 +307,11 @@ viewBox="0 0 8798 6221"
     <text x="5444" y="3182"  class="fil3 fnt5">CondR A</text>
    </g>
   </g>
+  <text x="8074.8496" y="2300" class="fil3 fnt5">T-TM Esq</text>
+  <text x="244.26085" y="2300" class="fil3 fnt5">T-TM Dir</text>
   <g id="_2853094785248">
    <g transform="matrix(0.577927 0.661637 -0.753143 0.657857 1741.56 -3035.81)">
-    <text x="5444" y="3182"  class="fil3 fnt5">CondR Gn</text>
+    <text x="5444" y="3182" class="fil3 fnt5">CondR Gn</text>
    </g>
   </g>
   <g id="_2853094787136">
@@ -409,6 +414,8 @@ viewBox="0 0 8798 6221"
   <text x="5524" y="310"  class="{FFLSUP} fnt14">{FLSUP}</text>
   <text x="5366" y="1092"  class="{FFLANT} fnt14">{FLANT}</text>
   <text x="1167" y="1268"  class="{FCRCP} fnt14">{CRCP}</text>
+  <text x="800" y="2305" class="{FTTMR} fnt14">{TTMR}</text>
+  <text x="7559" y="2287" class="{FTTML} fnt14">{TTML}</text>
   <text x="7133" y="1281"  class="{FCLCP} fnt14">{CLCP}</text>
   <text x="2615" y="1531"  class="{FCRFRANK} fnt14">{CRFRANK}</text>
   <text x="5693" y="1531"  class="{FCLFRANK} fnt14">{CLFRANK}</text>
@@ -476,7 +483,8 @@ viewBox="0 0 8798 6221"
             "white": "fil3",
             "red": "fil4",
             "yellow": "fil6",
-            "green": "fil5"
+            "green": "fil5",
+            "blue": "filblue"
         }
 
         self.lib= {
@@ -544,6 +552,10 @@ viewBox="0 0 8798 6221"
             "FMEFRMSP": colors[self.db["MEFLRMSP"]["color"]],
             "MEFLMSP": self.db["MEFLRMSP"]["MeFL X MSP"],
             "FMEFLMSP": colors[self.db["MEFLRMSP"]["color"]],
+            "FTTMR": colors[self.db["TTMLR"]["colorR"]],
+            "TTMR": self.db["TTMLR"]["T-TM DIR"],
+            "FTTML": colors[self.db["TTMLR"]["colorL"]],
+            "TTML": self.db["TTMLR"]["T-TM ESQ"]
         }
 
         if(self.getNumber(self.db["UDM"]["UDM"]) < 0):

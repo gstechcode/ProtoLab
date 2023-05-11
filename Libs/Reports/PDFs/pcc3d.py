@@ -357,7 +357,7 @@ class pcc3d(
 
         self.drawText(self.PAGESIZE[0]/2 + 60,810,self.db["response"]["GOLRMSP"], self.textSize)
 		
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/TM.png",100,950, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/PSGCF.png",100,950, mask= "auto")
   
         self.document.showPage()
         
@@ -503,7 +503,7 @@ class pcc3d(
     def Page20(self):
         
         self.setBody()
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",0,0, width= 1920, height= -1080, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",1920,0, width= -1920, height= -1080, mask= "auto")
         
         self.document.scale(1,-1)
         

@@ -13,7 +13,6 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
-        '''
         self.responseask= ""
         self.profile()
         self.FT()
@@ -33,7 +32,6 @@ class photos(object):
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
-        '''
         pass
     def messagebox(self, title: str, texto: str):
         i= Tk()
@@ -66,7 +64,7 @@ class photos(object):
     def profile(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Foto de Face Tecido Mole","Faça o ajuste para fazer a captura da Face de Tecido Mole do paciente")
+            self.messagebox("Reconstrução 3D de Superfície","Foto 3D, Meio perfil direito, 45 graus (_PC3D23 FIG 1 FACE OU CR NIO 45 GRAUS)")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/profile.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -76,7 +74,7 @@ class photos(object):
     def FT(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Foto da Fig 1 Alterada","Faça o ajuste para fazer a captura da foto da Fig 1 Alterada do paciente")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 FIG 2 dentes P Camper_")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FT.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -86,7 +84,7 @@ class photos(object):
     def PG(self):
         ciclo= True
         while ciclo:
-            self.messagebox("_PC3D22 Fig 2 Posição Gônios","Faça o ajuste para fazer a captura da foto da _PC3D22 Fig 2 Posição Gônios")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 4 POSIÇÃO GÔNIOS")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PG.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -96,7 +94,7 @@ class photos(object):
     def DH(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Dimensões das Hemi-Mandíbulas - _PC3D22 Fig 3 HEMI-MAND","Faça o ajuste para fazer a captura da foto _PC3D22 Fig 3 HEMI-MAND")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 5 HEMI-MAND")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DH.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -106,7 +104,7 @@ class photos(object):
     def DPC(self):
         ciclo= True
         while ciclo:
-            self.messagebox("_PC3D22 Fig 10 Mand e P Coronal","Faça o ajuste para fazer a captura da foto da _PC3D22 Fig 10 Mand e P Coronal")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 FIG 3 dentes P CORONAL")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DPC.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -116,7 +114,7 @@ class photos(object):
     def AF(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Foto da Altura Facial e Forma da Mandibula - _PC3D22 Fig 4 AFAI AFAS","Faça o ajuste para fazer a captura da foto _PC3D22 Fig 4 AFAI AFAS")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 6 AFAI AFAS")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/AF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -126,7 +124,7 @@ class photos(object):
     def FM(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Forma da Mandíbula - _PC3D22 Fig 5 FORMA MAND","Faça o ajuste para fazer a captura da foto _PC3D22 Fig 5 FORMA MAND")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 7 Forma Mand")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FM.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -136,7 +134,7 @@ class photos(object):
     def POEF(self):
         ciclo= True
         while ciclo:
-            self.messagebox("POEF - _PC3D22 Fig 6 POEF","Faça o ajuste para fazer a captura da foto _PC3D22 Fig 6 POEF")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 8 POEF")
             self.quad()
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/POEF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -146,7 +144,7 @@ class photos(object):
     def INC(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Incisivos","Cortes Ortorradiais Panorâmica. Linha Azul cheia, \n ponto de contato 11 e 21 – tela cheia apenas \n com os 9 cortes. Ajuste para foto.")
+            self.messagebox("Cefalometria VistaDent","Cortes Ortorradiais Panorâmica. Linha Azul cheia, ponto de contato 11 e 21 – tela cheia apenas com os 9 cortes.")
             self.quadFull()
             coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/INC.png", region= coords)
@@ -157,7 +155,7 @@ class photos(object):
     def TM(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Triangulo Mandibular - _PC3D22 Fig 9 Triângulo Mand","Faça o ajuste para fazer a captura da foto _PC3D22 Fig 9 Triângulo Mand")
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 10 Triângulo Mand")
             self.quad()
             coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/TM.png", region= coords)
@@ -166,15 +164,20 @@ class photos(object):
             if(not(self.responseAsk)):
                 break
     def PSGCF(self):
-        #self.messagebox("Posições Sagitais - Gônios, Capitulares e F. Mentonianos","Faça o ajuste para fazer a captura da foto das posições sagitais")
-        #self.quadFull()
-        #coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
-        #pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
-        pass
+        ciclo= True
+        while ciclo:
+            self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 11 Posição Sagital  Forames Mand")
+            self.quadFull()
+            coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
+            self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
+            self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
+            if(not(self.responseAsk)):
+                break
     def RIGHTMETR(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Reconstrução da Superficie - Fotos Planos 1","Faça o ajuste para fazer a captura da foto direita com medidas. (Fotos Planos 1)")
+            self.messagebox("Reconstrução da Superficie - Fotos Planos 1","Faça o ajuste para fazer a captura da foto Posição Maxila – Crânio direito. (Fotos Planos 1)")
             self.quadFull()
             coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png", region= coords)
@@ -185,7 +188,7 @@ class photos(object):
     def LEFTMETR(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Reconstrução da Superficie - Fotos Planos 1","Faça o ajuste para fazer a captura da foto esquerda com medidas - Fotos Planos 1")
+            self.messagebox("Reconstrução da Superficie - Fotos Planos 1","Faça o ajuste para fazer a captura da foto Posição Maxila – Crânio Esquerdo - Fotos Planos 1")
             self.quadFull()
             coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png", region= coords)
@@ -233,7 +236,7 @@ class photos(object):
     def ATMLEFT(self):
         ciclo= True
         while ciclo:
-            self.messagebox("ATM Esquerda","Faça o ajuste para fazer a captura da foto \n da ATM Esquerda. Espaços Articulares \n Panorâmica das ATM - ATM Esquerda – Linha Azul Cheia no centro da Cabeça da Mandíbula Esquerda – aparece \n somente os 9 cortes ortorradiais.")
+            self.messagebox("Espaços Articulares","Panorâmica das ATM - ATM Esquerda – Linha Azul Cheia no centro da Cabeça da Mandíbula Esquerda – \n aparece somente os 9 cortes Ortorradiais")
             self.quadFull()
             coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMLEFT.png", region= coords)
@@ -244,7 +247,7 @@ class photos(object):
     def ATMRIGHT(self):
         ciclo= True
         while ciclo:
-            self.messagebox("ATM Direito","Faça o ajuste para fazer a captura da foto \n da ATM Direito. Espaços Articulares \n Panorâmica das ATM - ATM DIreita – Linha Azul Cheia no centro da Cabeça da Mandíbula Direita – aparece \n somente os 9 cortes ortorradiais")
+            self.messagebox("Espaços Articulares","Panorâmica das ATM - ATM DIreita – Linha Azul Cheia no centro da Cabeça da Mandíbula Direita – \n aparece somente os 9 cortes ortorradiais")
             self.quadFull()
             coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/ATMRIGHT.png", region= coords)

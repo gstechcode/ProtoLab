@@ -13,6 +13,7 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
+        '''
         self.responseask= ""
         self.profile()
         self.FT()
@@ -32,11 +33,11 @@ class photos(object):
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
+        '''
         pass
     def messagebox(self, title: str, texto: str):
         i= Tk()
         i.title(title)
-        i.geometry("850x400")
         i.iconbitmap(os.getcwd() + "/CompassX.ico")
         i.config(bg="orange", padx="30px", pady="30px")
         label= Label(i, text= texto, wraplength= 700, font="Arial 14", bg="orange", fg="white")
@@ -44,6 +45,7 @@ class photos(object):
         btn= Button(i, text="OK", font="Arial 14", bg="green", fg="white", relief="flat",command= i.destroy)
         btn.pack()
         i.mainloop()
+        
     def askmessagebox(self, title: str, texto: str):
         i= Tk()
         i.title(title)

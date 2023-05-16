@@ -59,10 +59,10 @@ class pcc3d(
         self.drawText(60,380, "Genero: ", self.textSize, self.ORANGE)
         self.drawText(220,380, self.db["Genero"], self.textSize)
         self.drawText(670, 900, "Grupo Rotacional: {GrupoR} - Categoria Auxológica: {Cat}".format(GrupoR= self.db["GrupoR"], Cat= self.db["CatAux"]), 50)
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/profile.png", 800,820, width=800, height= 800)
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/profile.png", 900,820, width=800, height= 800)
         self.document.showPage()
         
-        self.View("Foto de Tecido Mole do Paciente - Visualização","profile")
+        self.View("Foto de Tecido Mole do Paciente - Visualização","profile", scale= 1.5)
         
     def Page2(self):
         self.textSize= 32
@@ -72,7 +72,7 @@ class pcc3d(
         x1, y1, x2, y2= 40,530,1350,530
         justify= 95
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",620,850, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/FT.png",620,900, mask= "auto")
         
         self.document.scale(1,-1)
         
@@ -166,13 +166,13 @@ class pcc3d(
         
         self.document.scale(1,-1)
         
-        self.drawText(20,625,"Distância do Gônio Direito ao Plano Coronal " + self.db["GOLRCP"]["GoL Coronal Plane"],self.textSize)
-        self.drawText(20,675,"Distância Gônio Direito ao P. Camper " + self.db["GoLRCamper"]["GoL Camper"],self.textSize)
+        self.drawText(20,625,"Dist. do Gônio Dir. ao P. Coronal " + self.db["GOLRCP"]["GoL Coronal Plane"],self.textSize)
+        self.drawText(20,675,"Dist. do Gônio Dir. ao P. Camper " + self.db["GoLRCamper"]["GoL Camper"],self.textSize)
         self.drawText(20,725,"Gônio Direito X P.S.M " + self.db["GOLRMSP"]["GoL MSP"],self.textSize)
         
         self.drawText(1640,550,"Gônio Esquerdo",self.textSize + 5)
-        self.drawText(1310,625,"Distância do Gônio Esquerdo ao Plano Coronal " + self.db["GOLRCP"]["GoR Coronal Plane"],self.textSize)
-        self.drawText(1220,675,"Distância Gônio Esquerdo ao P. Camper " + self.db["GoLRCamper"]["GoR Camper"],self.textSize)
+        self.drawText(1310,625,"Dist. do Gônio Esq. ao P. Coronal " + self.db["GOLRCP"]["GoR Coronal Plane"],self.textSize)
+        self.drawText(1315,675,"Dist. do Gônio Esq. ao P. Camper " + self.db["GoLRCamper"]["GoR Camper"],self.textSize)
         self.drawText(1425,725,"Gônio Esquerdo X P.S.M " + self.db["GOLRMSP"]["GoR MSP"],self.textSize)
         
         self.document.drawCentredString(self.PAGESIZE[0]/2,910,self.db["response"]["GOLRCP"])
@@ -203,12 +203,12 @@ class pcc3d(
         self.document.scale(1,-1)
 
         self.drawText(40,645,"Diagonal Mandibular Direita " + self.db["CondLRGN"]["CondR - Gn"], self.textSize)
-        self.drawText(40,695,"Comprimento do Ramo Mandibular Direito " + self.db["CONDLRGOLR"]["CondR GoR"], self.textSize)
-        self.drawText(40,745,"Comprimento do Corpo Mandibular Direito " + self.db["CORPUSLR"]["Corpus R"], self.textSize)
+        self.drawText(40,695,"Compr. do Ramo Mand. Dir. " + self.db["CONDLRGOLR"]["CondR GoR"], self.textSize)
+        self.drawText(40,745,"Compr. do Corpo Mand. Dir. " + self.db["CORPUSLR"]["Corpus R"], self.textSize)
         
         self.drawText(1340,645,"Diagonal Mandibular Esquerda " + self.db["CondLRGN"]["CondL - Gn"], self.textSize)
-        self.drawText(1180,695,"Comprimento do Ramo Mandibular Esquerdo " + self.db["CONDLRGOLR"]["CondL GoL"], self.textSize)
-        self.drawText(1180,745,"Comprimento do Corpo Mandibular Esquerdo " + self.db["CORPUSLR"]["Corpus L"], self.textSize)
+        self.drawText(1370,695,"Compr. do Ramo Mand. Esq. " + self.db["CONDLRGOLR"]["CondL GoL"], self.textSize)
+        self.drawText(1370,745,"Compr. do Corpo Mand. Esq. " + self.db["CORPUSLR"]["Corpus L"], self.textSize)
 
         self.document.drawCentredString(self.PAGESIZE[0]/2,910,self.db["response"]["CONDLRGN"])
         self.document.drawCentredString(self.PAGESIZE[0]/2,960,self.db["response"]["CONDLRGOLR"])
@@ -357,7 +357,7 @@ class pcc3d(
         
         self.document.showPage()
         
-        self.View("Triângulo Mandibular - Visualização", "TM")
+        self.View("Triângulo Mandibular - Visualização", "TM", scale= 1.5)
         
     def Page11(self):
 		
@@ -390,7 +390,7 @@ class pcc3d(
   
         self.document.showPage()
         
-        self.View("Posições Sagitais - Gônios, Capitulares e F. Mentonianos - Visualização","PSGCF")
+        self.View("Posições Sagitais - Gônios, Capitulares e F. Mentonianos - Visualização","PSGCF", scale= 1.5)
         
     def Page12(self):
 		
@@ -417,18 +417,18 @@ class pcc3d(
         
         self.drawText(self.PAGESIZE[0]/2 + 40,570,f"Distância {teeth46} X P. Coronal " + self.db["CP3646"]["46 Coronal Plane"], self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2 - 40,730,self.db["response"]["CP1626"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2,730,self.db["response"]["CP1626"], self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2 - 40,785,self.db["response"]["CP3646"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2,785,self.db["response"]["CP3646"], self.textSize)
         
-        self.resizeImageManual("DPC", "DPCdim", scale= 1.5)
+        self.resizeImageManual("DPC", "DPCdim", scale= 1.3)
         
         self.drawImage(os.getcwd() + "/Resources/Images/temp/DPCdim.png",100,950, mask= "auto")
         
         self.document.showPage()
         
         
-        self.View("Distância Dentes P. Coronal - Visualização", "DPC", scale= 1.8)
+        self.View("Distância Dentes P. Coronal - Visualização", "DPC", scale= 1.5)
 
     def Page13(self):
         

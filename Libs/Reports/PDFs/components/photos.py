@@ -13,7 +13,6 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
-        '''
         self.responseask= ""
         self.profile()
         self.FT()
@@ -33,7 +32,6 @@ class photos(object):
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
-        '''
         pass
     def messagebox(self, title: str, texto: str):
         i= Tk()

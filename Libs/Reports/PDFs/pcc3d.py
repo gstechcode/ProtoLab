@@ -495,9 +495,9 @@ class pcc3d(
     def Page17(self):
         
         self.setBody()
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png",-1920,0, width= 1920, height= -1080, mask= "auto", invert= True)
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png",0,0, width= 1920, height= -1080, mask= "auto")
         
-        self.document.scale(-1,-1)
+        self.document.scale(1,-1)
         
         self.drawText(20,250,"Posição Maxila", self.titleSize, self.ORANGE)
          

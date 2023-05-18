@@ -13,29 +13,32 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
+        '''
         self.responseask= ""
         self.profile()
         self.FT()
+        self.DPC()
         self.PG()
+        self.DH()
         self.AF()
         self.FM()
-        self.DPC()
-        self.DH()
         self.POEF()
-        self.INC()
         self.TM()
         self.PSGCF()
-        self.ATMLEFT()
-        self.ATMRIGHT()
         self.RIGHTMETR()
         self.LEFTMETR()
+        self.INC()
         self.PANRAD()
         self.RIGHTRAD()
         self.LEFTRAD()
-        pass
+        self.ATMLEFT()
+        self.ATMRIGHT()
+        '''
     def messagebox(self, title: str, texto: str):
         i= Tk()
         i.title(title)
+        quantLetter= len(texto) * 14
+        i.geometry(f"{quantLetter}x250+0+0")
         i.iconbitmap(os.getcwd() + "/CompassX.ico")
         i.config(bg="orange", padx="30px", pady="30px")
         label= Label(i, text= texto, wraplength= 700, font="Arial 14", bg="orange", fg="white")
@@ -48,7 +51,9 @@ class photos(object):
         i= Tk()
         i.title(title)
         i.iconbitmap(os.getcwd() + "/CompassX.ico")
-        i.config(bg="orange", padx="30px", pady="30px")
+        quantLetter= len(texto) * 14
+        i.geometry(f"{quantLetter}x220+0+0")
+        i.config(bg="orange", padx="20px", pady="20px")
         label= Label(i, text= texto, font="Arial 14", bg="orange", fg="white")
         label.pack(pady="20px")
         frame= Frame(i, bg="orange")
@@ -144,7 +149,7 @@ class photos(object):
     def INC(self):
         ciclo= True
         while ciclo:
-            self.messagebox("Cefalometria VistaDent","Cortes Ortorradiais Panorâmica. Linha Azul cheia, ponto de contato 11 e 21 – tela cheia apenas com os 9 cortes.")
+            self.messagebox("Cefalometria VistaDent - _PC3D23 Fig 9 Incisivos","Cortes Ortorradiais Panorâmica. Linha Azul cheia, ponto de contato 11 e 21 – tela cheia apenas com os 9 cortes. (_PC3D23 Fig 9 Incisivos)")
             self.quadFull()
             coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/INC.png", region= coords)
@@ -167,7 +172,7 @@ class photos(object):
         ciclo= True
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 11 Posição Sagital  Forames Mand")
-            self.quadFull()
+            self.quad()
             coords= (self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
@@ -178,8 +183,8 @@ class photos(object):
         ciclo= True
         while ciclo:
             self.messagebox("Reconstrução da Superficie - Fotos Planos 1","Faça o ajuste para fazer a captura da foto Posição Maxila – Crânio direito. (Fotos Planos 1)")
-            self.quadFull()
-            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            self.quadRec()
+            coords= (self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1])            
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/RIGHTMETR.png", region= coords)
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
@@ -189,8 +194,8 @@ class photos(object):
         ciclo= True
         while ciclo:
             self.messagebox("Reconstrução da Superficie - Fotos Planos 1","Faça o ajuste para fazer a captura da foto Posição Maxila – Crânio Esquerdo - Fotos Planos 1")
-            self.quadFull()
-            coords= (self.PhotosInitFull[0],self.PhotosInitFull[1], self.PhotosFinalFull[0] - self.PhotosInitFull[0],self.PhotosFinalFull[1] - self.PhotosInitFull[1])
+            self.quadRec()
+            coords= (self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1])            
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png", region= coords)
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
@@ -261,6 +266,41 @@ class photos(object):
         arq.close()
         InitPosition= (db["QUAD"][0],db["QUAD"][1])
         FinalPosition= (int(InitPosition[0] + 700),int(InitPosition[1] + 700))
+        self.PhotosInit= InitPosition
+        self.PhotosFinal= FinalPosition
+        red = win32api.RGB(255, 0, 0)
+        cont = 1
+        while True:
+            cont += 1
+            for x1 in range(int(InitPosition[0]),int(FinalPosition[0])):
+                win32gui.SetPixel(dc,x1,InitPosition[1] -1,red)
+                win32gui.SetPixel(dc,x1,InitPosition[1] -2,red)
+                win32gui.SetPixel(dc,x1,InitPosition[1] -3,red)
+            
+            for x2 in range(int(InitPosition[0]),int(FinalPosition[0])):
+                win32gui.SetPixel(dc,x2,FinalPosition[1] +1,red)
+                win32gui.SetPixel(dc,x2,FinalPosition[1] +2,red)
+                win32gui.SetPixel(dc,x2,FinalPosition[1] +3,red)
+                
+            for y1 in range(int(InitPosition[1]),int(FinalPosition[1])):
+                win32gui.SetPixel(dc,InitPosition[0] -1,y1,red)
+                win32gui.SetPixel(dc,InitPosition[0] -2,y1,red)
+                win32gui.SetPixel(dc,InitPosition[0] -3,y1,red)
+                
+            for y2 in range(int(InitPosition[1]),int(FinalPosition[1])):
+                win32gui.SetPixel(dc,FinalPosition[0] +1,y2,red)
+                win32gui.SetPixel(dc,FinalPosition[0] +2,y2,red)
+                win32gui.SetPixel(dc,FinalPosition[0] +3,y2,red)
+                
+            if(cont > 50):
+                break
+    def quadRec(self):
+        arq= open(os.getcwd() + "/Resources/Databases/CompassX.coords","r")
+        db= json.loads(arq.readlines()[0])
+        arq.close()
+        InitPosition= (db["QUADRECSTART"][0],db["QUADRECSTART"][1])
+        DeslocPosition= (InitPosition[0] + (db["QUADRECEND"][0] - InitPosition[0]),InitPosition[1] + (db["QUADRECEND"][1] - InitPosition[1]))
+        FinalPosition= (int(InitPosition[0] + DeslocPosition[0]),int(InitPosition[1] + DeslocPosition[1]))
         self.PhotosInit= InitPosition
         self.PhotosFinal= FinalPosition
         red = win32api.RGB(255, 0, 0)

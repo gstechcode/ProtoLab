@@ -38,7 +38,7 @@ class coordsCalibrator:
         
     def basicConfiguration(self) -> None:
         self.PATHDB= os.getcwd() + "/Resources/Databases/CompassX.coords"
-        modelCoords= {"QUAD": (0,0),"QUADFULL": (0,0)}
+        modelCoords= {"QUAD": (0,0),"QUADFULL": (0,0), "QUADRECSTART": (0,0),"QUADRECEND": (0,0)}
         self.content= []
         
         if(not(self.DBExist())):

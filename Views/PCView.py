@@ -9,10 +9,13 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMenu
+from Libs.Calibration.coordsCalibrator import *
 from PyQt5.QtWidgets import QFileDialog
 from tkinter import filedialog
+from tkinter import messagebox
 from datetime import datetime
-import time, os
+import time, os, json
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow, master):
@@ -460,10 +463,24 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
+        self.menubar.setStyleSheet("background: white")
         MainWindow.setStatusBar(self.statusbar)
-
+        filemenu= QMenu("Configurações",self.menubar)
+        self.menubar.addMenu(filemenu)
+        filemenu.addAction("Calibrar",self.coordCalibration)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def verificaSeExisteCoordVazia(self):
+        arq= open(os.getcwd() + "/Resources/Databases/CompassX.coords","r")
+        db= json.loads(arq.readlines()[0])
+        arq.close()
+        if(db["QUAD"][0] == 0 or db["QUADFULL"][0] == 0):
+            messagebox.showwarning("CompassX - Coordenadas não calibradas","Você possui coordenadas não configuradas, por favor as configure para perfeito funcionamento do software.")
+    
+    def coordCalibration(self):
+        calibration= coordsCalibrator()
+
     def openFileNamesDialog(self):
         try:
             options = QFileDialog.Options()
@@ -528,4 +545,5 @@ class Execute:
         ui = Ui_MainWindow()
         ui.setupUi(MainWindow, self)
         MainWindow.show()
+        ui.verificaSeExisteCoordVazia()
         app.exec_()

@@ -62,7 +62,7 @@ class pcc3d(
         self.drawImage(os.getcwd() + "/Resources/Images/temp/profile.png", 900,820, width=800, height= 800)
         self.document.showPage()
         
-        self.View("Foto de Tecido Mole do Paciente - Visualização","profile", scale= 1.5)
+        self.View("Foto de Tecido Mole do Paciente - Visualização","profile", scale= 1.3)
         
     def Page2(self):
         self.textSize= 32
@@ -225,7 +225,7 @@ class pcc3d(
 
         self.drawText(60,120,"Altura Facial",self.titleSize, self.ORANGE)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/AF.png",620,850, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/AF.png",610,850, mask= "auto")
         
         self.document.scale(1,-1)
         
@@ -357,7 +357,7 @@ class pcc3d(
         
         self.document.showPage()
         
-        self.View("Triângulo Mandibular - Visualização", "TM", scale= 1.5)
+        self.View("Triângulo Mandibular - Visualização", "TM", scale= 1.3)
         
     def Page11(self):
 		
@@ -390,7 +390,7 @@ class pcc3d(
   
         self.document.showPage()
         
-        self.View("Posições Sagitais - Gônios, Capitulares e F. Mentonianos - Visualização","PSGCF", scale= 1.5)
+        self.View("Posições Sagitais - Gônios, Capitulares e F. Mentonianos - Visualização","PSGCF", scale= 1.3)
         
     def Page12(self):
 		
@@ -421,14 +421,13 @@ class pcc3d(
         
         self.drawText(self.PAGESIZE[0]/2,785,self.db["response"]["CP3646"], self.textSize)
         
-        self.resizeImageManual("DPC", "DPCdim", scale= 1.3)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/DPCdim.png",100,950, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/DPC.png",100,950, mask= "auto")
         
         self.document.showPage()
         
         
-        self.View("Distância Dentes P. Coronal - Visualização", "DPC", scale= 1.5)
+        self.View("Distância Dentes P. Coronal - Visualização", "DPC", scale= 1.3)
 
     def Page13(self):
         
@@ -496,9 +495,9 @@ class pcc3d(
     def Page17(self):
         
         self.setBody()
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png",0,0, width= 1920, height= -1080, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTMETR.png",-1920,0, width= 1920, height= -1080, mask= "auto", invert= True)
         
-        self.document.scale(1,-1)
+        self.document.scale(-1,-1)
         
         self.drawText(20,250,"Posição Maxila", self.titleSize, self.ORANGE)
          
@@ -539,9 +538,9 @@ class pcc3d(
     def Page20(self):
         
         self.setBody()
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",1920,0, width= -1920, height= -1080, mask= "auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/LEFTRAD.png",-1920,0, width= 1920, height= -1080, mask= "auto", invert= True)
         
-        self.document.scale(1,-1)
+        self.document.scale(-1,-1)
         
         self.drawText(60,80,"Reconstrução", self.titleSize, self.ORANGE)
         self.drawText(60,150,"Hemitelerradiografia Esquerda", self.titleSize, self.ORANGE)

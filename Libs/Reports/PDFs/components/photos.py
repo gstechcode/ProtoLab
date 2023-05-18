@@ -66,7 +66,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Reconstrução 3D de Superfície","Foto 3D, Meio perfil direito, 45 graus (_PC3D23 FIG 1 FACE OU CR NIO 45 GRAUS)")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/profile.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/profile.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -76,7 +76,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 FIG 2 dentes P Camper_")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FT.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FT.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -86,7 +86,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 4 POSIÇÃO GÔNIOS")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PG.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PG.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -96,7 +96,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 5 HEMI-MAND")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DH.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DH.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -106,7 +106,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 FIG 3 dentes P CORONAL")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DPC.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/DPC.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -116,7 +116,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 6 AFAI AFAS")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/AF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/AF.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -126,7 +126,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 7 Forma Mand")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FM.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/FM.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -136,7 +136,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 8 POEF")
             self.quad()
-            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/POEF.png", region=(self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100)))
+            pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/POEF.png", region=(self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1]))
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
             if(not(self.responseAsk)):
@@ -157,7 +157,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 10 Triângulo Mand")
             self.quad()
-            coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
+            coords= (self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/TM.png", region= coords)
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
@@ -168,7 +168,7 @@ class photos(object):
         while ciclo:
             self.messagebox("Cefalometria VistaDent","_PC3D23 Fig 11 Posição Sagital  Forames Mand")
             self.quadFull()
-            coords= (self.PhotosInit[0],self.PhotosInit[1], int(39* DISPLAY[0]/100),int(39* DISPLAY[0]/100))
+            coords= (self.PhotosInit[0],self.PhotosInit[1], self.PhotosFinal[0] - self.PhotosInit[0],self.PhotosFinal[1] - self.PhotosInit[1])
             pyautogui.screenshot(os.getcwd() + "/Resources/Images/temp/PSGCF.png", region= coords)
             self.messagebox("Compass X - Captura efetuada!","Sua captura foi realizada com sucesso!")
             self.askmessagebox("CompassX - Captura está correta?","Deseja realizar outra captura?")
@@ -256,11 +256,11 @@ class photos(object):
             if(not(self.responseAsk)):
                 break
     def quad(self):
-        arq= open(os.getcwd() + "/Resources/Databases/protocoords.json","r")
+        arq= open(os.getcwd() + "/Resources/Databases/CompassX.coords","r")
         db= json.loads(arq.readlines()[0])
         arq.close()
-        InitPosition= (db["quad"][0],db["quad"][1])
-        FinalPosition= (int(InitPosition[0] + ((39* DISPLAY[0]/100))),int(InitPosition[1] + ((39* DISPLAY[0]/100))))
+        InitPosition= (db["QUAD"][0],db["QUAD"][1])
+        FinalPosition= (int(InitPosition[0] + 700),int(InitPosition[1] + 700))
         self.PhotosInit= InitPosition
         self.PhotosFinal= FinalPosition
         red = win32api.RGB(255, 0, 0)
@@ -290,8 +290,11 @@ class photos(object):
             if(cont > 50):
                 break
     def quadFull(self):
-        InitPosition= (263,121)
-        FinalPosition= (1885,966)
+        arq= open(os.getcwd() + "/Resources/Databases/CompassX.coords","r")
+        db= json.loads(arq.readlines()[0])
+        arq.close()
+        InitPosition= (db["QUADFULL"][0],db["QUADFULL"][1])
+        FinalPosition= (db["QUADFULL"][0] + 1622,db["QUADFULL"][1] + 845)
         self.PhotosInitFull= InitPosition
         self.PhotosFinalFull= FinalPosition
         self.messagebox("Tudo pronto?","A captura será feita do retangulo completo do Vista Dent")

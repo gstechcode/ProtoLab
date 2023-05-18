@@ -472,12 +472,14 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def verificaSeExisteCoordVazia(self):
-        arq= open(os.getcwd() + "/Resources/Databases/CompassX.coords","r")
-        db= json.loads(arq.readlines()[0])
-        arq.close()
-        if(db["QUAD"][0] == 0 or db["QUADFULL"][0] == 0):
+        if(os.path.exists(os.getcwd() + "/Resources/Databases/CompassX.coords")):
+            arq= open(os.getcwd() + "/Resources/Databases/CompassX.coords","r")
+            db= json.loads(arq.readlines()[0])
+            arq.close()
+            if(db["QUAD"][0] == 0 or db["QUADFULL"][0] == 0):
+                messagebox.showwarning("CompassX - Coordenadas não calibradas","Você possui coordenadas não configuradas, por favor as configure para perfeito funcionamento do software.")
+        else:
             messagebox.showwarning("CompassX - Coordenadas não calibradas","Você possui coordenadas não configuradas, por favor as configure para perfeito funcionamento do software.")
-    
     def coordCalibration(self):
         calibration= coordsCalibrator()
 

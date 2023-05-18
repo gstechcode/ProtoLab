@@ -8,6 +8,7 @@ class coordsCalibrator:
         self.display= GraphInterface(title="CompassX - Calibrador de Coordenada",geometry="500x500", bg="orange").run()
         self.treeview= treeview(self.display, ["Coordenada","Valor"], self.content, updateCoord= self.updateCoord)
         self.lastConfiguration()
+        self.updateFileDB()
         self.display.mainloop()
      
     def updateCoord(self, itemSelected: str, newCoord: tuple) -> None:

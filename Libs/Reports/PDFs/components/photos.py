@@ -13,9 +13,8 @@ dc = win32gui.GetDC(0)
 
 class photos(object):
     def runPhotos(self):
-        '''
         self.responseask= ""
-        self.profile()
+        '''self.profile()
         self.FT()
         self.DPC()
         self.PG()
@@ -25,6 +24,7 @@ class photos(object):
         self.POEF()
         self.TM()
         self.PSGCF()
+        '''
         self.RIGHTMETR()
         self.LEFTMETR()
         self.INC()
@@ -33,12 +33,11 @@ class photos(object):
         self.LEFTRAD()
         self.ATMLEFT()
         self.ATMRIGHT()
-        '''
     def messagebox(self, title: str, texto: str):
         i= Tk()
         i.title(title)
         quantLetter= len(texto) * 14
-        i.geometry(f"{quantLetter}x250+0+0")
+        i.geometry(f"{quantLetter}x250+0+{DISPLAY[1] - 290}")
         i.iconbitmap(os.getcwd() + "/CompassX.ico")
         i.config(bg="orange", padx="30px", pady="30px")
         label= Label(i, text= texto, wraplength= 700, font="Arial 14", bg="orange", fg="white")
@@ -52,7 +51,7 @@ class photos(object):
         i.title(title)
         i.iconbitmap(os.getcwd() + "/CompassX.ico")
         quantLetter= len(texto) * 14
-        i.geometry(f"{quantLetter}x220+0+0")
+        i.geometry(f"{quantLetter}x220+0+{DISPLAY[1] - 260}")
         i.config(bg="orange", padx="20px", pady="20px")
         label= Label(i, text= texto, font="Arial 14", bg="orange", fg="white")
         label.pack(pady="20px")
@@ -300,7 +299,8 @@ class photos(object):
         arq.close()
         InitPosition= (db["QUADRECSTART"][0],db["QUADRECSTART"][1])
         DeslocPosition= (InitPosition[0] + (db["QUADRECEND"][0] - InitPosition[0]),InitPosition[1] + (db["QUADRECEND"][1] - InitPosition[1]))
-        FinalPosition= (int(InitPosition[0] + DeslocPosition[0]),int(InitPosition[1] + DeslocPosition[1]))
+        FinalPosition= (int(DeslocPosition[0]),int(DeslocPosition[1]))
+        print(FinalPosition)
         self.PhotosInit= InitPosition
         self.PhotosFinal= FinalPosition
         red = win32api.RGB(255, 0, 0)

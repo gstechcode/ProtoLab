@@ -1,8 +1,8 @@
-class ANGULO21311141:
+class ANGGON:
 	def __init__(self, master):
 		self.fdict= master.csv
 		self.master= master
-		self.load("Ângulo 21/31","Ângulo 11/41","ANG2131","ANG1141","ANG21311141")
+		self.load("Ângulo Goníaco Left","Ângulo Goníaco Right","ANGGONLEFT","ANGGONRIGHT","ANGGONLR")
 	def load(self, fator1, fator2, name1, name2, relacao):
 		try:
 			self.master.fdict[relacao]= {

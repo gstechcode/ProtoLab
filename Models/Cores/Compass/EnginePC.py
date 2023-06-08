@@ -40,7 +40,7 @@ from Models.Cores.Compass.Functions.CAPITULARELRPCP import CAPITULARELRPCP
 from Models.Cores.Compass.Functions.CAPITULARELRPFRANK import CAPITULARELRPFRANK
 from Models.Cores.Compass.Functions.GOLRGN import GOLRGN
 from Models.Cores.Compass.Functions.CONDLRGOLR import CONDLRGOLR
-from Models.Cores.Compass.Functions.ANGULO21311141 import ANGULO21311141
+from Models.Cores.Compass.Functions.ANGGON import ANGGON
 from Models.Cores.Compass.Functions.GNMSP import GNMSP
 from Models.Cores.Compass.Functions.POEF import POEF
 from Models.Cores.Compass.Functions.GOLRMSP import GOLRMSP
@@ -119,7 +119,7 @@ class EnginePC:
 		meflrcp= MEFLRCP(self)
 		carl= CARL(self)
 		try:
-			angulo21311141= ANGULO21311141(self)
+			angulo21311141= ANGGON(self)
 		except Exception:
 			pass
 		corpuslr= CORPUSLR(self)

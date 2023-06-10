@@ -284,8 +284,8 @@ class pcc3d(
         self.drawText(1920/2 + 440,440,"Pogônio x Linha Holdaway " + self.db["Pog P, Holdaway"]["Pog P, Holdaway"], self.textSize)
         self.drawText(1920/2 + 610,495,"IMPA Esquerdo " + self.db["IMPA"]["31"], self.textSize)
         self.drawText(1920/2 + 650,550,"IMPA Direito " + self.db["IMPA"]["41"], self.textSize)
-        self.drawText(1920/2 + 335,605,"Ângulo Interincisivos Centrais Direitos " + str(180 - float(self.db["ANGGONLR"]["ANGGONRIGHT"].replace("°",""))) + "°", self.textSize)
-        self.drawText(1920/2 + 305,660,"Ângulo Interincisivos Centrais Esquerdos " + self.db["ANGGONLR"]["ANGGONLEFT"], self.textSize)
+        self.drawText(1920/2 + 335,605,"Ângulo Interincisivos Centrais Direitos " + str("%.2f"%(180 - float(self.db["ANGGONLR"]["ANGGONRIGHT"].replace("°","")))) + "°", self.textSize)
+        self.drawText(1920/2 + 305,660,"Ângulo Interincisivos Centrais Esquerdos " + str("%.2f"%float(self.db["ANGGONLR"]["ANGGONLEFT"].replace("°",""))) + "°", self.textSize)
 
         self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",40,800, width= 1135, height= 591, mask= "auto")
 

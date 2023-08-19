@@ -26,13 +26,13 @@ class PDFOdontograma(backgrounds.backgrounds, structure.structure):
         
         self.setOdontogramaFundo()
         
-        self.drawText(810, 100, "Infográfico", 40, self.ORANGE)
+        self.drawText(740, 100, "Infográfico", 40, self.ORANGE)
         
         self.drawText(1595, 810, "Infográfico criado pela", self.textSize)
         
         self.drawText(1480, 850, "Dra. Mara Rufato Cardoso(2017)", self.textSize)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/odontograma.png",230,1000, width= 1326,height= 949, mask="auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/odontograma.png",100,950, width= 1447,height= 869, mask="auto")
         
         self.document.showPage()
         

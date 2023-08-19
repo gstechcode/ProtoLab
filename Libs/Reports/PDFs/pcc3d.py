@@ -49,6 +49,86 @@ class pcc3d(
     def Cover(self):
         self.setCover()
         self.document.showPage()
+    def calcDenticao(self):
+        if(self.db["denticao"] == "Decídua"):
+            denticao= {
+                "11": "51",
+                "12": "52",
+                "13": "53",
+                "14": "54",
+                "16": "55",
+                "21": "61",
+                "22": "62",
+                "23": "63",
+                "24": "64",
+                "26": "65",
+                "31": "71",
+                "32": "72",
+                "33": "73",
+                "34": "74",
+                "36": "75",
+                "41": "81",
+                "42": "82",
+                "43": "83",
+                "44": "84",
+                "46": "85",
+            }
+        elif(self.db["denticao"] == "Mista"):
+            denticao= {
+                "11": "51",
+                "12": "52",
+                "13": "53",
+                "14": "54",
+                "16": "16",
+                "21": "61",
+                "22": "62",
+                "23": "63",
+                "24": "64",
+                "26": "26",
+                "31": "71",
+                "32": "72",
+                "33": "73",
+                "34": "74",
+                "36": "36",
+                "41": "81",
+                "42": "82",
+                "43": "83",
+                "44": "84",
+                "46": "46",
+            }
+        elif(self.db["denticao"] == "Permanente"):
+            denticao= {
+                "11": "11",
+                "12": "12",
+                "13": "13",
+                "14": "14",
+                "15": "15",
+                "16": "16",
+                "17": "17",
+                "21": "21",
+                "22": "22",
+                "23": "23",
+                "24": "24",
+                "25": "15",
+                "26": "26",
+                "27": "27",
+                "31": "31",
+                "32": "32",
+                "33": "33",
+                "34": "34",
+                "35": "35",
+                "36": "36",
+                "37": "37",
+                "41": "41",
+                "42": "42",
+                "43": "43",
+                "44": "44",
+                "45": "45",
+                "46": "46",
+                "47": "47",
+            }
+        return denticao
+            
     def Page1(self):
         self.setBody()
         self.drawText(60,100, "Dados do paciente:", self.titleSize, self.ORANGE)
@@ -77,86 +157,69 @@ class pcc3d(
         self.document.scale(1,-1)
         
         #13 Height Camper
-        if(self.denticaoSlot):
-            self.drawText(x1,y1, f"Altura 53 X Plano de Camper " + self.db["HC1323"]["13 Height Camper"],self.textSize)
-        else:
-            self.drawText(x1,y1, "Altura 13 X Plano de Camper " + self.db["HC1323"]["13 Height Camper"],self.textSize)
-		
+        
+        self.drawText(x1,y1, f"Altura {self.denticao['13']} X Plano de Camper " + self.db["HC1323"]["13 Height Camper"],self.textSize)
+        
 		#23 Height Camper
-        if(self.denticaoSlot):
-            self.drawText(x2,y2, "Altura 63 X Plano de Camper " + self.db["HC1323"]["23 Height Camper"],self.textSize)
-        else:
-            self.drawText(x2,y2, "Altura 23 X Plano de Camper " + self.db["HC1323"]["23 Height Camper"],self.textSize)
+        
+        self.drawText(x2,y2, f"Altura {self.denticao['23']} X Plano de Camper " + self.db["HC1323"]["23 Height Camper"],self.textSize)
 
         #14 Height Camper
-        if(self.denticaoSlot):
-            self.drawText(x1 + desvio,y1 + spacing, "Altura 54 X Plano de Camper " + self.db["HC1424"]["14 Height Camper"],self.textSize)
-        else:
-            self.drawText(x1 + desvio,y1 + spacing, "Altura 14 X Plano de Camper " + self.db["HC1424"]["14 Height Camper"],self.textSize)	
+        
+        self.drawText(x1 + desvio,y1 + spacing, f"Altura {self.denticao['14']} X Plano de Camper " + self.db["HC1424"]["14 Height Camper"],self.textSize)	
 
 		#24 Height Camper
-        if(self.denticaoSlot):
-            self.drawText(x2 - desvio,y2 + spacing, "Altura 64 X Plano de Camper " + self.db["HC1424"]["24 Height Camper"],self.textSize)
-        else:
-            self.drawText(x2 - desvio,y2 + spacing, "Altura 24 X Plano de Camper " + self.db["HC1424"]["24 Height Camper"],self.textSize)
+        
+        self.drawText(x2 - desvio,y2 + spacing, f"Altura {self.denticao['24']} X Plano de Camper " + self.db["HC1424"]["24 Height Camper"],self.textSize)
 
 		#16 Height Camper
-        if(self.denticaoSlot):
-            self.drawText(x1 + desvio*2,y1 + spacing*2, "Altura 55 X Plano de Camper " + self.db["HC1626"]["16 Height Camper"],self.textSize)
-        else:
-            self.drawText(x1 + desvio*2,y1 + spacing*2, "Altura 16 X Plano de Camper " + self.db["HC1626"]["16 Height Camper"],self.textSize)	
+        
+        self.drawText(x1 + desvio*2,y1 + spacing*2, f"Altura {self.denticao['16']} X Plano de Camper " + self.db["HC1626"]["16 Height Camper"],self.textSize)	
 
 		#26 Height Camper
-        if(self.denticaoSlot):
-            self.drawText(x2 - desvio*2,y2 + spacing*2, "Altura 65 X Plano de Camper " + self.db["HC1626"]["26 Height Camper"],self.textSize)
-        else:
-            self.drawText(x2 - desvio*2,y2 + spacing*2, "Altura 26 X Plano de Camper " + self.db["HC1626"]["26 Height Camper"],self.textSize)	
+        
+        self.drawText(x2 - desvio*2,y2 + spacing*2, f"Altura {self.denticao['26']} X Plano de Camper " + self.db["HC1626"]["26 Height Camper"],self.textSize)	
 	
 		#13 XMSP
-        if(self.denticaoSlot):
-            self.drawText(x1 + desvio*3,y1 + spacing*3, "Distância 53 X P.S.M. " + self.db["MSP1323"]["13 X MSP"],self.textSize)
-        else:
-            self.drawText(x1 + desvio*3,y1 + spacing*3, "Distância 13 X P.S.M. " + self.db["MSP1323"]["13 X MSP"],self.textSize)
-		#23 XMSP
-        if(self.denticaoSlot):
-            self.drawText(x2 - desvio*3 + justify,y2 + spacing*3, "Distância 63 X P.S.M. " + self.db["MSP1323"]["23 X MSP"],self.textSize)
-        else:
-            self.drawText(x2 - desvio*3 + justify,y2 + spacing*3, "Distância 23 X P.S.M. " + self.db["MSP1323"]["23 X MSP"],self.textSize)
+        
+        self.drawText(x1 + desvio*3,y1 + spacing*3, f"Distância {self.denticao['13']} X P.S.M. " + self.db["MSP1323"]["13 X MSP"],self.textSize)
+		
+        #23 XMSP
+        
+        self.drawText(x2 - desvio*3 + justify,y2 + spacing*3, f"Distância {self.denticao['23']} X P.S.M. " + self.db["MSP1323"]["23 X MSP"],self.textSize)
 
 		#14 XMSP
-        if(self.denticaoSlot):
-            self.drawText(x1 + desvio*4,y1 + spacing*4, "Distância 54 X P.S.M. " + self.db["MSP1424"]["14 X MSP"],self.textSize)
-        else:
-            self.drawText(x1 + desvio*4,y1 + spacing*4, "Distância 14 X P.S.M. " + self.db["MSP1424"]["14 X MSP"],self.textSize)	
+        
+        self.drawText(x1 + desvio*4,y1 + spacing*4, f"Distância {self.denticao['14']} X P.S.M. " + self.db["MSP1424"]["14 X MSP"],self.textSize)	
 		
 		#24 XMSP
-        if(self.denticaoSlot):
-            self.drawText(x2 - desvio*4 + justify,y2 + spacing*4, "Distância 64 X P.S.M. " + self.db["MSP1424"]["24 X MSP"],self.textSize)
-        else:
-            self.drawText(x2 - desvio*4 + justify,y2 + spacing*4, "Distância 24 X P.S.M. " + self.db["MSP1424"]["24 X MSP"],self.textSize)
+        
+        self.drawText(x2 - desvio*4 + justify,y2 + spacing*4, f"Distância {self.denticao['24']} X P.S.M. " + self.db["MSP1424"]["24 X MSP"],self.textSize)
 
 		#16 XMSP
-        if(self.denticaoSlot):
-            self.drawText(x1 + desvio*5,y1 + spacing*5, "Distância 55 X P.S.M. " + self.db["MSP1626"]["16 X MSP"],self.textSize)
-        else:
-            self.drawText(x1 + desvio*5,y1 + spacing*5, "Distância 16 X P.S.M. " + self.db["MSP1626"]["16 X MSP"],self.textSize)
+        
+        self.drawText(x1 + desvio*5,y1 + spacing*5, f"Distância {self.denticao['16']} X P.S.M. " + self.db["MSP1626"]["16 X MSP"],self.textSize)
 
 		#26 XMSP
-        if(self.denticaoSlot):
-            self.drawText(x2 - desvio*5 + justify,y2 + spacing*5, "Distância 65 X P.S.M. " + self.db["MSP1626"]["26 X MSP"],self.textSize)
-        else:
-            self.drawText(x2 - desvio*5 + justify,y2 + spacing*5, "Distância 26 X P.S.M. " + self.db["MSP1626"]["26 X MSP"],self.textSize)
+        
+        self.drawText(x2 - desvio*5 + justify,y2 + spacing*5, f"Distância {self.denticao['26']} X P.S.M. " + self.db["MSP1626"]["26 X MSP"],self.textSize)
 
-        self.document.drawCentredString(self.PAGESIZE[0]/2,y1 + spacing*7,self.db["response"]["HC"])
-        self.document.drawCentredString(self.PAGESIZE[0]/2,y1 + spacing*8,self.db["response"]["XMSP131416"])
+        self.document.drawCentredString(self.PAGESIZE[0]/2,y1 + spacing*7,self.RespostaDeAcordoComDenticao(self.db["response"]["HC"]))
+        self.document.drawCentredString(self.PAGESIZE[0]/2,y1 + spacing*8,self.RespostaDeAcordoComDenticao(self.db["response"]["XMSP131416"]))
         self.document.setStrokeColorRGB(255/255, 102/255, 0/255)
         self.document.rect(40,50,750,140, fill=0, stroke= 1)
         self.drawText(80,110,"Distância em Milímetros dos dentes aos", 40)
         self.drawText(80,160,"Planos de Camper e P. Sagital Mediano", 40)
         self.document.showPage()
-        
         self.View("Distância Planos de Camper e P. Sagital Mediano - Visualização","FT", scale= 1.3)
 
+    def RespostaDeAcordoComDenticao(self, response):
+        for item in self.denticao:
+            if(str(item) in response):
+                response= response.replace(str(item),self.denticao[item])
+            else:
+                pass
+        return response
     def Page3(self):
         self.setBody()
         self.drawText(60,120,"Posição dos Gônios",self.titleSize, self.ORANGE)
@@ -263,10 +326,10 @@ class pcc3d(
         self.drawText(60,120,"POEF", self.titleSize, self.ORANGE)
         self.drawText(60,190,"Plano Oclusal Estético Funcional", 50, self.ORANGE)
 
-        self.drawText(80,700,"POEF 11 " + self.db["POEF"]["POEF 11"], self.textSize)
-        self.drawText(80,765,"POEF 21 " + self.db["POEF"]["POEF 21"], self.textSize)
-        self.drawText(80,830,"POEF 31 " + self.db["POEF"]["POEF 31"], self.textSize)
-        self.drawText(80,895,"POEF 41 " + self.db["POEF"]["POEF 41"], self.textSize)
+        self.drawText(80,700,f"POEF {self.denticao['11']} " + self.db["POEF"]["POEF 11"], self.textSize)
+        self.drawText(80,765,f"POEF {self.denticao['21']} " + self.db["POEF"]["POEF 21"], self.textSize)
+        self.drawText(80,830,f"POEF {self.denticao['31']} " + self.db["POEF"]["POEF 31"], self.textSize)
+        self.drawText(80,895,f"POEF {self.denticao['41']} " + self.db["POEF"]["POEF 41"], self.textSize)
 
         self.drawImage(os.getcwd() + "/Resources/Images/temp/POEF.png",820,1000, mask= "auto")
         
@@ -284,7 +347,7 @@ class pcc3d(
         self.drawText(1920/2 + 440,440,"Pogônio x Linha Holdaway " + self.db["Pog P, Holdaway"]["Pog P, Holdaway"], self.textSize)
         self.drawText(1920/2 + 610,495,"IMPA Esquerdo " + self.db["IMPA"]["31"], self.textSize)
         self.drawText(1920/2 + 650,550,"IMPA Direito " + self.db["IMPA"]["41"], self.textSize)
-        self.drawText(1920/2 + 335,605,"Ângulo Interincisivos Centrais Direitos " + str("%.2f"%(180 - float(self.db["ANGGONLR"]["ANGGONRIGHT"].replace("°","")))) + "°", self.textSize)
+        self.drawText(1920/2 + 335,605,"Ângulo Interincisivos Centrais Direitos " + str("%.2f"%(float(self.db["ANGGONLR"]["ANGGONRIGHT"].replace("°","")))) + "°", self.textSize)
         self.drawText(1920/2 + 305,660,"Ângulo Interincisivos Centrais Esquerdos " + str("%.2f"%float(self.db["ANGGONLR"]["ANGGONLEFT"].replace("°",""))) + "°", self.textSize)
 
         self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",40,800, width= 1135, height= 591, mask= "auto")
@@ -292,29 +355,22 @@ class pcc3d(
         self.document.showPage()
         
     def Page9(self):
-        decidua= self.db["denticao"] == "Decídua"
-        if(decidua):
-            teeth11= "61"
-            teeth21= "51"
-        else:
-            teeth11= "11"
-            teeth21= "21"
             
         self.setBody()
   
         self.drawText(self.PAGESIZE[0]/2 + 250,140,"Incisivos", self.titleSize, self.ORANGE)
 
-        self.drawText(self.PAGESIZE[0]/2 + 270,330,f"Ângulo {teeth11} Linha NA " + self.db["NA"]["ANG11"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,330,f"Ângulo {self.denticao['11']} Linha NA " + self.db["NA"]["ANG11"], self.textSize)
 		
-        self.drawText(self.PAGESIZE[0]/2 + 270,385,f"Ângulo {teeth21} Linha NA " + self.db["NA"]["ANG21"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,385,f"Ângulo {self.denticao['21']} Linha NA " + self.db["NA"]["ANG21"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 270,440,f"Distância {teeth11} Linha NA " + self.db["NA"]["MM11"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,440,f"Distância {self.denticao['11']} Linha NA " + self.db["NA"]["MM11"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 270,495,f"Distância {teeth21} Linha NA " + self.db["NA"]["MM21"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,495,f"Distância {self.denticao['21']} Linha NA " + self.db["NA"]["MM21"], self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2 + 270,550,f"Distância {teeth11} Linha A-Pog " + self.db["APOG1121"]["APOG11MM"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,550,f"Distância {self.denticao['11']} Linha A-Pog " + self.db["APOG1121"]["APOG11MM"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 270,605,f"Distância {teeth21} Linha A-Pog " + self.db["APOG1121"]["APOG21MM"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 270,605,f"Distância {self.denticao['21']} Linha A-Pog " + self.db["APOG1121"]["APOG21MM"], self.textSize)
 		
         self.drawImage(os.getcwd() + "/Resources/Images/temp/INC.png",40,800, width= 1135, height= 591, mask= "auto")
         
@@ -396,36 +452,24 @@ class pcc3d(
 		
         self.setBody()
 
-        if(self.denticaoSlot == True):
-            teeth16= "55"
-            teeth26= "65"
-            teeth36= "75"
-            teeth46= "85"
-        else:
-            teeth16= "16"
-            teeth26= "26"
-            teeth36= "36"
-            teeth46= "46"
-
         self.drawText(self.PAGESIZE[0]/2 - 40,140,"Distância Dentes P. Coronal", self.titleSize, self.ORANGE)
 
-        self.drawText(self.PAGESIZE[0]/2 + 40,300,f"Distância {teeth16} X P. Coronal " + self.db["CP1626"]["16 Coronal Plane"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 40,300,f"Distância {self.denticao['16']} X P. Coronal " + self.db["CP1626"]["16 Coronal Plane"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 40,355,f"Distância {teeth26} X P. Coronal " + self.db["CP1626"]["26 Coronal Plane"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 40,355,f"Distância {self.denticao['26']} X P. Coronal " + self.db["CP1626"]["26 Coronal Plane"], self.textSize)
 
-        self.drawText(self.PAGESIZE[0]/2 + 40,515,f"Distância {teeth36} X P. Coronal " + self.db["CP3646"]["36 Coronal Plane"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 40,515,f"Distância {self.denticao['36']} X P. Coronal " + self.db["CP3646"]["36 Coronal Plane"], self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2 + 40,570,f"Distância {teeth46} X P. Coronal " + self.db["CP3646"]["46 Coronal Plane"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2 + 40,570,f"Distância {self.denticao['46']} X P. Coronal " + self.db["CP3646"]["46 Coronal Plane"], self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2,730,self.db["response"]["CP1626"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2,730,self.RespostaDeAcordoComDenticao(self.db["response"]["CP1626"]), self.textSize)
         
-        self.drawText(self.PAGESIZE[0]/2,785,self.db["response"]["CP3646"], self.textSize)
+        self.drawText(self.PAGESIZE[0]/2,785,self.RespostaDeAcordoComDenticao(self.db["response"]["CP3646"]), self.textSize)
         
         
         self.drawImage(os.getcwd() + "/Resources/Images/temp/DPC.png",100,950, mask= "auto")
         
         self.document.showPage()
-        
         
         self.View("Distância Dentes P. Coronal - Visualização", "DPC", scale= 1.3)
 
@@ -571,13 +615,13 @@ class pcc3d(
 
         GenOdontograma.GenOdontograma(self.db)
         
-        self.drawText(810, 100, "Infográfico", 40, self.ORANGE)
+        self.drawText(740, 100, "Infográfico", 40, self.ORANGE)
         
         self.drawText(1595, 830, "Infográfico criado pela", self.textSize)
         
         self.drawText(1480, 870, "Dra. Mara Rufato Cardoso(2017)", self.textSize)
         
-        self.drawImage(os.getcwd() + "/Resources/Images/temp/odontograma.png",230,1000, width= 1326,height= 949, mask="auto")
+        self.drawImage(os.getcwd() + "/Resources/Images/temp/odontograma.png",100,950, width= 1447,height= 869, mask="auto")
         
         self.document.showPage()
 
@@ -600,6 +644,7 @@ class pcc3d(
             self.denticaoSlot= False
         else:
             self.denticaoSlot= True
+        self.denticao= self.calcDenticao()
         self.PAGESIZE= (1920,1080)
         self.registerFont()
         self.ORANGE= (255/255,102/255,0/255)
